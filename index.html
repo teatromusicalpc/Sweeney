@@ -393,8 +393,7 @@
     text-shadow:0 0 22px rgba(200,26,32,.55), 0 0 60px rgba(200,26,32,.3), 0 2px 3px rgba(0,0,0,.8); }
   .v6 .logo { width:400px; max-width:100%; height:auto; margin-top:6px; display:block;
     filter:
-      drop-shadow(0 0 18px rgba(200,26,32,.5))
-      drop-shadow(0 0 42px rgba(200,26,32,.28))
+      drop-shadow(0 0 14px rgba(200,26,32,.5))
       drop-shadow(0 3px 6px rgba(0,0,0,.85)); }
   .v6 .sub6 { font-family:'IM Fell English', serif; font-style:italic; font-size:16px;
     color:rgba(233,226,207,.9); margin-top:9px; text-shadow:0 1px 3px rgba(0,0,0,.9); }
@@ -723,8 +722,8 @@
     85%    { filter:brightness(1.07) saturate(1.06); }
   }
   @keyframes idleLogoGlow{
-    0%,100%{ filter:drop-shadow(0 0 18px rgba(200,26,32,.5)) drop-shadow(0 0 42px rgba(200,26,32,.28)) drop-shadow(0 3px 6px rgba(0,0,0,.85)); }
-    50%    { filter:drop-shadow(0 0 34px rgba(200,26,32,.9)) drop-shadow(0 0 72px rgba(200,26,32,.55)) drop-shadow(0 3px 6px rgba(0,0,0,.85)); }
+    0%,100%{ filter:brightness(1) drop-shadow(0 0 14px rgba(200,26,32,.5)) drop-shadow(0 3px 6px rgba(0,0,0,.85)); }
+    50%    { filter:brightness(1.12) drop-shadow(0 0 20px rgba(200,26,32,.82)) drop-shadow(0 3px 6px rgba(0,0,0,.85)); }
   }
   @keyframes idleFloat{
     0%,100%{ transform:translateY(0); }
@@ -744,8 +743,8 @@
   .slide.is-active .np .orn{ animation:idleOrn 4s ease-in-out infinite; }
 
   /* CAPA (.v6): cena respira + fogo do forno tremeluz + logo brasa/flutua */
-  .slide.is-active .v6 .photo-bg img{ animation:idleBreath 18s ease-in-out infinite, idleFire 5.5s ease-in-out infinite; will-change:transform,filter; }
-  .slide.is-active .v6 .logo{ animation:idleLogoGlow 4.5s ease-in-out infinite, idleFloat 6s ease-in-out infinite; will-change:transform,filter; }
+  .slide.is-active .v6 .photo-bg img{ animation:idleBreath 18s ease-in-out infinite; will-change:transform; }
+  .slide.is-active .v6 .logo{ animation:idleLogoGlow 4.5s ease-in-out infinite, idleFloat 6s ease-in-out infinite; will-change:transform; }
 
   /* PÁGINA DE IMAGEM: a colagem respira lentamente */
   .slide.is-active .imgpage img{ animation:idleBreath 20s ease-in-out infinite; will-change:transform; }
@@ -769,6 +768,21 @@
     .slide.is-active .v6 .photo-bg img, .slide.is-active .v6 .logo, .slide.is-active .imgpage img,
     .slide.is-active .np .grid3 .chef, .slide.is-active .np .songs .act-h,
     .slide.is-active .np .tech .sep, .slide.is-active .np .tech .blk .k{ animation:none !important; }
+  }
+
+  /* ===== MOBILE / TOUCH — perfil de animação do ProgramaSplit =====
+     As animações agora usam só transform, opacity e filtro LEVE (um drop-shadow
+     pequeno) — o mesmo perfil do ProgramaSplit, que roda bem no celular. Aqui só
+     evitamos os dois itens sem precedente seguro no mobile: animar text-shadow
+     (repinta texto a cada quadro) e o grão SVG com mix-blend na capa. */
+  @media (hover: none), (pointer: coarse) {
+    .slide.is-active .np .ttl,
+    .slide.is-active .np .orn,
+    .slide.is-active .np .songs .act-h,
+    .slide.is-active .np .tech .blk .k { animation: none !important; }
+
+    /* grão SVG + mix-blend na capa: pesado e imperceptível no celular */
+    .v6 .grain6 { display: none !important; }
   }
 </style>
 </head>
