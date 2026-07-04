@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sweeney Todd — Programa · Flipbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600;1,700;1,900&family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=UnifrakturCook:wght@700&family=Pirata+One&family=Special+Elite&family=Cinzel:wght@400;500;600;700&family=Oswald:wght@300;400;500;600;700&family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 100%; height: 100%; }
+  body { background: #0c0b0c; font-family: 'IM Fell English', serif; }
+
+  /* ===== Tokens ===== */
+  :root {
+    --blood: #8e1014;
+    --blood-bright: #b3171c;
+    --bone: #e9e2cf;
+    --bone-2: #ded4ba;
+    --ink: #15110e;
+    --steel: #d2d6d8;
+    --steel-2: #9aa0a2;
+    --steel-dark: #62686a;
+    --soot: #16141a;
+    --gold: #b89149;
+  }
+
+  /* ===== Shared photo placeholder ===== */
+  .photo {
+    position: relative; overflow: hidden;
+    background: repeating-linear-gradient(135deg, #201d22 0 7px, #2a262c 7px 14px);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .photo::after {
+    content: attr(data-cap);
+    font-family: 'Special Elite', monospace;
+    font-size: 9px; letter-spacing: 1px; text-transform: uppercase;
+    color: rgba(255,255,255,.42);
+    border: 1px solid rgba(255,255,255,.22);
+    padding: 3px 7px; background: rgba(0,0,0,.35); white-space: nowrap;
+  }
+  /* sepia / engraving placeholder for parchment layouts */
+  .photo.sepia {
+    background: repeating-linear-gradient(135deg, #cdbf9e 0 7px, #d8cbab 7px 14px);
+    filter: saturate(.7);
+  }
+  .photo.sepia::after {
+    color: rgba(40,28,16,.55); border-color: rgba(40,28,16,.3); background: rgba(233,226,207,.5);
+  }
+
+  /* =========================================================
+     VERSION A — Penny-dreadful playbill (parchment)
+     ========================================================= */
+  .v1 {
+    width: 520px; height: 735px;
+    background:
+      radial-gradient(120% 90% at 50% 8%, #efe8d6 0%, #e3dac3 55%, #d3c8aa 100%);
+    color: var(--ink);
+    padding: 0; position: relative; overflow: hidden;
+    font-family: 'IM Fell English', serif;
+  }
+  .v1 .aged { position:absolute; inset:0; pointer-events:none;
+    background:
+      radial-gradient(60% 45% at 18% 14%, rgba(120,86,40,.16), transparent 60%),
+      radial-gradient(50% 40% at 88% 86%, rgba(90,60,30,.18), transparent 60%),
+      radial-gradient(40% 30% at 70% 30%, rgba(120,86,40,.10), transparent 60%);
+    mix-blend-mode: multiply; }
+  .v1 .vig { position:absolute; inset:0; pointer-events:none;
+    box-shadow: inset 0 0 60px rgba(40,26,10,.35), inset 0 0 14px rgba(40,26,10,.25); }
+  .v1 .border { position:absolute; inset:14px; border:2px solid var(--ink); }
+  .v1 .border::after { content:''; position:absolute; inset:4px; border:1px solid rgba(21,17,14,.55); }
+  .v1 .inner { position:relative; z-index:3; height:100%;
+    padding: 30px 30px 24px; display:flex; flex-direction:column; }
+
+  .v1 .topkick { text-align:center; font-family:'IM Fell English SC', serif;
+    letter-spacing:5px; font-size:12px; text-transform:uppercase; color:var(--blood); }
+  .v1 .orn { text-align:center; color:var(--ink); font-size:13px; letter-spacing:6px; margin:5px 0 2px; }
+
+  .v1 .ttl { text-align:center; font-family:'Playfair Display', serif; font-weight:900;
+    line-height:.92; letter-spacing:.5px; font-size:62px; color:var(--ink); margin:2px 0 0; }
+  .v1 .ttl em { display:block; font-style:normal; }
+  .v1 .ttl .todd { color:var(--blood); }
+  .v1 .demon { text-align:center; font-family:'Playfair Display', serif; font-style:italic;
+    font-weight:600; font-size:17px; letter-spacing:1.5px; margin-top:7px; color:var(--ink); }
+  .v1 .thriller { text-align:center; font-family:'IM Fell English SC', serif;
+    letter-spacing:4px; text-transform:uppercase; font-size:10.5px; color:rgba(21,17,14,.7); margin-top:6px; }
+
+  .v1 .rule { display:flex; align-items:center; gap:10px; margin:13px 2px 13px;
+    color:var(--ink); font-size:13px; }
+  .v1 .rule::before, .v1 .rule::after { content:''; flex:1; height:0;
+    border-top:1px solid var(--ink); box-shadow:0 3px 0 -2px var(--ink); }
+
+  .v1 .leads { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  .v1 .lead { text-align:center; }
+  .v1 .lead .ph { border:1px solid var(--ink); padding:4px; background:rgba(255,255,255,.25); }
+  .v1 .lead .photo { aspect-ratio:1/1; }
+  .v1 .lead .role { font-family:'Playfair Display', serif; font-weight:800; font-size:22px;
+    margin-top:9px; line-height:1; color:var(--ink); }
+  .v1 .lead .actor { font-family:'IM Fell English SC', serif; letter-spacing:2px;
+    text-transform:uppercase; font-size:12px; color:var(--blood); margin-top:4px; }
+
+  .v1 .ens-label { text-align:center; font-family:'IM Fell English SC', serif;
+    letter-spacing:4px; text-transform:uppercase; font-size:11px; color:rgba(21,17,14,.72);
+    margin:15px 0 9px; }
+  .v1 .ens { display:grid; grid-template-columns:repeat(3,1fr); gap:11px 14px; }
+  .v1 .erow { display:flex; flex-direction:column; align-items:center; text-align:center; }
+  .v1 .erow .role { font-family:'Playfair Display', serif; font-weight:700; font-size:13.5px;
+    line-height:1.05; color:var(--ink); white-space:nowrap; }
+  .v1 .erow .actor { font-family:'IM Fell English', serif; font-style:italic; font-size:12.5px;
+    color:rgba(21,17,14,.78); margin-top:1px; white-space:nowrap; }
+
+  .v1 .foot { margin-top:auto; padding-top:11px; text-align:center; }
+  .v1 .foot .frule { color:var(--blood); font-size:12px; letter-spacing:6px; margin-bottom:6px; }
+  .v1 .foot .venue { font-family:'Playfair Display', serif; font-weight:700; font-size:15px;
+    letter-spacing:1px; color:var(--ink); }
+  .v1 .foot .dates { font-family:'IM Fell English SC', serif; letter-spacing:2px;
+    text-transform:uppercase; font-size:11px; color:var(--blood); margin-top:3px; }
+
+  /* =========================================================
+     VERSION B — The Razor (dramatic poster)
+     ========================================================= */
+  .v2 {
+    width:520px; height:735px;
+    background: radial-gradient(130% 80% at 50% 18%, #1b1820 0%, #0a090c 68%);
+    color:#ece9e2; position:relative; overflow:hidden;
+    font-family:'Oswald', sans-serif;
+  }
+  .v2 .smoke { position:absolute; inset:0; pointer-events:none; opacity:.5;
+    background:
+      radial-gradient(40% 30% at 22% 80%, rgba(120,120,130,.10), transparent 70%),
+      radial-gradient(45% 30% at 78% 70%, rgba(120,120,130,.08), transparent 70%); }
+  .v2 .kick { position:absolute; top:30px; left:0; right:0; text-align:center;
+    font-family:'Cinzel', serif; font-weight:500; letter-spacing:7px; font-size:11px;
+    text-transform:uppercase; color:var(--steel-2); z-index:4; }
+
+  /* the razor */
+  .v2 .razor { position:absolute; top:74px; left:50%; transform:translateX(-50%) rotate(2deg);
+    z-index:3; width:64px; height:392px; }
+  .v2 .blade { position:absolute; left:14px; top:0; width:34px; height:300px;
+    background: linear-gradient(90deg,
+      #4d5356 0%, #aeb4b6 14%, #eef2f3 30%, #c4cacc 50%, #7e8588 74%, #4a5052 100%);
+    clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 100%);
+    box-shadow: 0 0 22px rgba(220,228,232,.25); }
+  .v2 .blade::before { content:''; position:absolute; left:0; top:5%; bottom:0; width:3px;
+    background:linear-gradient(#ffffff, #dfe6e8); box-shadow:0 0 8px rgba(255,255,255,.7); }
+  .v2 .pin { position:absolute; left:24px; top:298px; width:14px; height:14px; border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #eef2f3, #6b7173 70%); box-shadow:0 0 6px rgba(0,0,0,.6); z-index:5; }
+  .v2 .handle { position:absolute; left:8px; top:306px; width:46px; height:96px;
+    transform:rotate(7deg); transform-origin:top center;
+    background:linear-gradient(90deg, #15161a 0%, #34363c 35%, #44464d 50%, #26282d 70%, #101115 100%);
+    border-radius:6px 6px 9px 9px; box-shadow:inset 0 0 8px rgba(0,0,0,.6); }
+  .v2 .handle::after { content:''; position:absolute; left:50%; top:8px; bottom:8px; width:2px;
+    transform:translateX(-50%); background:linear-gradient(rgba(255,255,255,.18), rgba(255,255,255,0)); }
+  /* blood */
+  .v2 .drip { position:absolute; left:13px; top:80px; width:4px; z-index:4; }
+  .v2 .drip i { position:absolute; left:0; top:0; width:4px; height:170px;
+    background:linear-gradient(var(--blood-bright), var(--blood)); border-radius:2px; }
+  .v2 .drip b { position:absolute; left:-3px; top:168px; width:10px; height:13px;
+    background:radial-gradient(circle at 35% 30%, var(--blood-bright), #5e0a0d 80%);
+    border-radius:50% 50% 50% 50%/ 40% 40% 60% 60%; box-shadow:0 4px 10px rgba(120,8,10,.5); }
+  .v2 .drop2 { position:absolute; left:24px; top:300px; width:7px; height:9px; z-index:4;
+    background:radial-gradient(circle at 35% 30%, var(--blood-bright), #5e0a0d 80%);
+    border-radius:50% 50% 50% 50%/ 40% 40% 60% 60%; }
+
+  .v2 .title { position:absolute; left:0; right:0; bottom:206px; text-align:center; z-index:5; }
+  .v2 .title .s1 { font-family:'Cinzel', serif; font-weight:700; font-size:54px; line-height:.9;
+    letter-spacing:2px; color:#f2efe8; text-shadow:0 2px 18px rgba(0,0,0,.7); }
+  .v2 .title .s2 { font-family:'Cinzel', serif; font-weight:700; font-size:54px; line-height:.9;
+    letter-spacing:2px; color:var(--blood-bright); text-shadow:0 2px 22px rgba(160,18,22,.5); }
+  .v2 .title .sub { font-family:'Oswald', sans-serif; font-weight:300; letter-spacing:5px;
+    text-transform:uppercase; font-size:11.5px; color:var(--steel-2); margin-top:12px; }
+
+  .v2 .castbar { position:absolute; left:30px; right:30px; bottom:74px; z-index:5; }
+  .v2 .castbar .leads { display:grid; grid-template-columns:1fr 1fr; gap:24px; text-align:center;
+    padding-bottom:13px; margin-bottom:11px; border-bottom:1px solid rgba(210,214,216,.22); }
+  .v2 .castbar .lead .role { font-family:'Cinzel', serif; font-weight:600; font-size:16px;
+    text-transform:uppercase; letter-spacing:.5px; color:#f2efe8; }
+  .v2 .castbar .lead .actor { font-family:'Oswald', sans-serif; font-weight:300; font-size:12px;
+    letter-spacing:2px; text-transform:uppercase; color:var(--blood-bright); margin-top:3px; }
+  .v2 .castbar .enslab { text-align:center; font-family:'Cinzel', serif; letter-spacing:5px;
+    text-transform:uppercase; font-size:9px; color:var(--steel-dark); margin-bottom:7px; }
+  .v2 .castbar .ens { text-align:center; padding:0 6px; line-height:1.75;
+    font-family:'Oswald', sans-serif; font-weight:300; font-size:11px; letter-spacing:1.5px;
+    text-transform:uppercase; color:#cdcabf; }
+  .v2 .castbar .ens span { white-space:nowrap; }
+  .v2 .castbar .ens span:not(:last-child)::after { content:'\25C6'; color:var(--blood-bright);
+    font-size:6px; margin:0 9px; position:relative; top:-2px; }
+
+  .v2 .foot { position:absolute; left:0; right:0; bottom:28px; text-align:center; z-index:5;
+    font-family:'Oswald', sans-serif; font-weight:300; letter-spacing:2px; text-transform:uppercase;
+    font-size:11px; color:var(--steel-2); }
+  .v2 .foot b { color:#ece9e2; font-weight:500; }
+  .v2 .foot .r { color:var(--blood-bright); }
+
+  /* =========================================================
+     VERSION C — Fleet Street signage (foggy London)
+     ========================================================= */
+  .v3 {
+    width:520px; height:735px;
+    background:
+      linear-gradient(180deg, #13151a 0%, #191b20 40%, #20221f 100%);
+    color:#d7d2c4; position:relative; overflow:hidden;
+    font-family:'IM Fell English', serif;
+  }
+  /* brick + fog */
+  .v3 .brick { position:absolute; inset:0; opacity:.5;
+    background-image:
+      linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+    background-size:54px 22px; }
+  .v3 .fog { position:absolute; left:0; right:0; bottom:0; height:55%; pointer-events:none;
+    background:linear-gradient(180deg, transparent, rgba(150,150,140,.10) 60%, rgba(170,168,150,.16)); }
+  .v3 .lamp { position:absolute; top:-40px; left:50%; transform:translateX(-50%); width:320px; height:300px;
+    pointer-events:none; background:radial-gradient(circle at 50% 0, rgba(216,186,108,.28), transparent 62%); }
+
+  .v3 .pad { position:absolute; inset:0; z-index:2; padding:30px 28px 24px;
+    display:flex; flex-direction:column; }
+  .v3 .street { text-align:center; font-family:'IM Fell English SC', serif; letter-spacing:5px;
+    text-transform:uppercase; font-size:11px; color:var(--gold); }
+
+  /* hanging tonsorial sign */
+  .v3 .hanger { display:flex; flex-direction:column; align-items:center; margin-top:6px; }
+  .v3 .chains { display:flex; justify-content:space-between; width:150px; height:18px; }
+  .v3 .chains i { width:2px; height:100%; background:linear-gradient(#7c7256, #38342a);
+    transform:rotate(8deg); transform-origin:top; }
+  .v3 .chains i:last-child { transform:rotate(-8deg); }
+  .v3 .sign { width:300px; border:2px solid var(--gold); background:
+      linear-gradient(180deg, #181a18, #101210); padding:13px 10px 12px; text-align:center;
+    box-shadow:0 12px 30px rgba(0,0,0,.6), inset 0 0 0 4px rgba(184,145,73,.12); position:relative; }
+  .v3 .sign::before, .v3 .sign::after { content:'✶'; position:absolute; top:5px; color:var(--gold); font-size:11px; }
+  .v3 .sign::before { left:8px; } .v3 .sign::after { right:8px; }
+  .v3 .sign .est { font-family:'IM Fell English SC', serif; letter-spacing:3px; font-size:9px;
+    text-transform:uppercase; color:rgba(216,186,108,.8); }
+  .v3 .sign .name { font-family:'Playfair Display', serif; font-weight:900; font-size:46px;
+    line-height:.9; color:var(--gold); letter-spacing:1px; margin:2px 0; }
+  .v3 .sign .trade { font-family:'Playfair Display', serif; font-style:italic; font-weight:600;
+    font-size:14px; color:#d7d2c4; letter-spacing:1px; }
+  .v3 .pole { width:6px; height:14px; background:linear-gradient(#b8242a, #fff 50%, #2a52a0 50%, #2a52a0);
+    background-size:100% 200%; animation:none; margin-top:0; border-radius:2px 2px 0 0;
+    box-shadow:0 0 0 1px rgba(0,0,0,.4); }
+
+  .v3 .ttl { text-align:center; margin-top:16px; }
+  .v3 .ttl .big { font-family:'Playfair Display', serif; font-weight:900; font-size:40px;
+    line-height:.92; color:#ece7d8; letter-spacing:.5px; }
+  .v3 .ttl .big em { font-style:normal; color:var(--blood-bright); }
+  .v3 .ttl .sub { font-family:'IM Fell English', serif; font-style:italic; font-size:13px;
+    color:#b9b3a3; margin-top:5px; }
+
+  /* shop directory */
+  .v3 .dir { margin-top:16px; border-top:1px solid rgba(184,145,73,.4);
+    border-bottom:1px solid rgba(184,145,73,.4); padding:11px 4px; }
+  .v3 .dlab { text-align:center; font-family:'IM Fell English SC', serif; letter-spacing:4px;
+    text-transform:uppercase; font-size:10px; color:var(--gold); margin-bottom:9px; }
+  .v3 .leads { display:grid; grid-template-columns:1fr 1fr; gap:13px; margin-bottom:11px; }
+  .v3 .lc { display:flex; gap:9px; align-items:center; }
+  .v3 .lc .photo { width:52px; height:52px; flex-shrink:0; border:1px solid rgba(184,145,73,.5); }
+  .v3 .lc .role { font-family:'Playfair Display', serif; font-weight:700; font-size:16px;
+    color:#ece7d8; line-height:1; }
+  .v3 .lc .actor { font-family:'IM Fell English', serif; font-style:italic; font-size:12.5px;
+    color:var(--gold); margin-top:3px; }
+  .v3 .ens { display:grid; grid-template-columns:1fr 1fr; gap:3px 18px; }
+  .v3 .er { display:flex; justify-content:space-between; align-items:baseline;
+    border-bottom:1px dotted rgba(215,210,196,.22); padding:3px 0; }
+  .v3 .er .role { font-family:'Playfair Display', serif; font-weight:600; font-size:13px; color:#ddd8ca; white-space:nowrap; }
+  .v3 .er .actor { font-family:'IM Fell English', serif; font-style:italic; font-size:11.5px;
+    color:#a59f8f; white-space:nowrap; }
+
+  .v3 .foot { margin-top:auto; text-align:center; padding-top:12px;
+    font-family:'IM Fell English SC', serif; letter-spacing:2px; text-transform:uppercase; }
+  .v3 .foot .venue { font-size:13px; color:#ece7d8; }
+  .v3 .foot .dates { font-size:11px; color:var(--blood-bright); margin-top:3px; }
+
+  /* =========================================================
+     VERSION D — Mrs. Lovett's Bill of Fare (macabre menu)
+     ========================================================= */
+  .v4 {
+    width:520px; height:735px;
+    background:
+      radial-gradient(125% 95% at 50% -8%, #e3d8bc 0%, #cdbf99 52%, #ac9d76 100%);
+    color:var(--ink); position:relative; overflow:hidden;
+    padding:0; font-family:'Special Elite', serif;
+  }
+  /* ---- dirty paper layers ---- */
+  .v4 .grime { position:absolute; inset:0; pointer-events:none; mix-blend-mode:multiply; opacity:.6;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='420'%3E%3Cfilter id='s'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.011' numOctaves='4' seed='8'/%3E%3CfeColorMatrix values='0 0 0 0 0.34 0 0 0 0 0.24 0 0 0 0 0.12 0 0 0 0.95 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23s)'/%3E%3C/svg%3E");
+    background-size:cover; }
+  .v4 .grain { position:absolute; inset:0; pointer-events:none; mix-blend-mode:multiply; opacity:.18;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size:190px 190px; }
+  .v4 .grease { position:absolute; inset:0; pointer-events:none; mix-blend-mode:multiply;
+    background:
+      radial-gradient(26% 19% at 80% 16%, rgba(95,60,26,.34), transparent 62%),
+      radial-gradient(20% 14% at 14% 58%, rgba(70,44,20,.30), transparent 62%),
+      radial-gradient(18% 12% at 64% 90%, rgba(90,58,26,.28), transparent 62%),
+      radial-gradient(22% 28% at 4% 98%, rgba(70,44,20,.30), transparent 60%),
+      radial-gradient(24% 20% at 98% 74%, rgba(80,50,22,.28), transparent 60%); }
+  .v4 .vig { position:absolute; inset:0; pointer-events:none;
+    box-shadow: inset 0 0 80px rgba(38,24,8,.5), inset 0 0 26px rgba(38,24,8,.42); }
+  .v4 .border { position:absolute; inset:16px; border:2px double var(--ink); pointer-events:none; opacity:.82; }
+  /* ---- blood ---- */
+  .v4 .blood { position:absolute; inset:0; pointer-events:none; z-index:2; mix-blend-mode:multiply; }
+  .v4 .splat { position:absolute; overflow:visible; }
+  .v4 .inner { position:relative; z-index:3; height:100%; padding:26px 30px 20px;
+    display:flex; flex-direction:column; }
+
+  .v4 .est { text-align:center; font-family:'IM Fell English SC', serif; letter-spacing:4px;
+    text-transform:uppercase; font-size:11px; color:rgba(21,17,14,.78); }
+  .v4 .ttl { text-align:center; font-family:'UnifrakturCook', cursive; font-weight:700;
+    font-size:50px; line-height:.95; color:var(--blood); margin:2px 0 0;
+    text-shadow:0 1px 0 rgba(0,0,0,.18); }
+  .v4 .sub { text-align:center; font-family:'IM Fell English', serif; font-style:italic;
+    font-size:17.5px; color:var(--ink); margin-top:2px; }
+  .v4 .orn { text-align:center; color:var(--ink); font-size:11px; letter-spacing:9px;
+    margin:6px 0 4px; opacity:.66; }
+  .v4 .fare { font-family:'Cinzel', serif; font-weight:600; letter-spacing:8px;
+    text-transform:uppercase; font-size:18px; color:var(--ink); margin:0 0 2px 2px; }
+
+  .v4 .menu { margin-top:3px; }
+  .v4 .item { display:flex; align-items:center; gap:14px; padding:4px 0;
+    border-bottom:1px dotted rgba(21,17,14,.5); }
+  .v4 .item:first-child { border-top:1px dotted rgba(21,17,14,.5); }
+  .v4 .thumb { position:relative; width:48px; height:44px; flex-shrink:0; }
+  .v4 .thumb .pin { position:absolute; top:-6px; left:50%; transform:translateX(-50%) rotate(45deg);
+    width:9px; height:9px; background:var(--blood); z-index:3; box-shadow:0 1px 2px rgba(0,0,0,.4); }
+  .v4 .thumb .frame { width:100%; height:100%; border:1px solid var(--ink);
+    box-shadow:inset 0 0 0 2px rgba(233,226,207,.42), 0 1px 3px rgba(21,17,14,.3);
+    background:repeating-linear-gradient(135deg,#c4b68f 0 7px,#cfc19f 7px 14px); filter:saturate(.7);
+    display:flex; align-items:center; justify-content:center; }
+  .v4 .thumb .frame span { font-family:'Special Elite', serif; font-size:7.5px; line-height:1.3;
+    letter-spacing:1px; text-transform:uppercase; color:rgba(40,28,16,.6); text-align:center; }
+  .v4 .thumb .no { position:absolute; bottom:-3px; right:-5px; background:var(--ink); color:var(--bone);
+    font-family:'Special Elite', serif; font-size:8px; padding:0 4px; letter-spacing:.5px; z-index:3; }
+  .v4 .item .body { flex:1; min-width:0; }
+  .v4 .item .nm { font-family:'Playfair Display', serif; font-weight:800; font-size:17px;
+    line-height:1; color:var(--ink); }
+  .v4 .item .nm small { font-family:'IM Fell English', serif; font-style:italic; font-weight:400;
+    font-size:13px; color:var(--blood); margin-left:8px; }
+  .v4 .item .desc { font-family:'Special Elite', serif; font-size:9.5px; letter-spacing:.4px;
+    color:rgba(21,17,14,.72); margin-top:4px; text-transform:uppercase; }
+  .v4 .item .price { font-family:'Playfair Display', serif; font-weight:700; font-size:15px;
+    color:var(--blood); white-space:nowrap; text-align:right; }
+
+  .v4 .stamp { position:absolute; z-index:6; top:60px; right:30px; transform:rotate(-12deg);
+    border:3px double var(--blood); color:var(--blood); padding:5px 11px; text-align:center;
+    font-family:'IM Fell English SC', serif; text-transform:uppercase; line-height:1.05;
+    background:rgba(236,227,205,.74);
+    box-shadow:0 0 0 1px rgba(142,16,20,.15) inset, 0 1px 4px rgba(0,0,0,.18); }
+  .v4 .stamp b { display:block; font-size:17px; letter-spacing:1px; }
+  .v4 .stamp span { display:block; font-size:8px; letter-spacing:2px; }
+
+  /* ---- footer ---- */
+  .v4 .foot { margin-top:auto; padding-top:9px; border-top:2px solid var(--ink);
+    display:grid; grid-template-columns:auto 1fr auto; align-items:stretch; }
+  .v4 .foot .k { font-family:'IM Fell English SC', serif; text-transform:uppercase; letter-spacing:1.5px;
+    font-size:8px; color:var(--blood); display:block; }
+  .v4 .foot b { font-family:'Playfair Display', serif; }
+  .v4 .foot .fl { display:flex; flex-direction:column; justify-content:flex-end; gap:1px; padding-right:16px; }
+  .v4 .foot .fl b { font-size:17px; letter-spacing:.5px; color:var(--ink); line-height:1; margin:2px 0 1px; }
+  .v4 .foot .fl .a { font-family:'Special Elite', serif; font-size:9px; letter-spacing:.5px;
+    color:rgba(21,17,14,.7); text-transform:uppercase; }
+  .v4 .foot .fc { border-left:1px solid rgba(21,17,14,.42); border-right:1px solid rgba(21,17,14,.42);
+    padding:1px 12px; display:flex; flex-direction:column; gap:5px; justify-content:center; }
+  .v4 .foot .credits { display:grid; grid-template-columns:repeat(3,1fr); gap:3px 8px; text-align:center; }
+  .v4 .foot .credits .k { font-size:7px; letter-spacing:1px; white-space:nowrap; }
+  .v4 .foot .credits b { font-size:10px; color:var(--ink); line-height:1.05; white-space:nowrap; letter-spacing:0; }
+  .v4 .foot .dur { text-align:center; }
+  .v4 .foot .dur b { font-size:11px; color:var(--ink); }
+  .v4 .foot .fr { display:flex; flex-direction:column; justify-content:flex-end; text-align:right; padding-left:16px; }
+  .v4 .foot .fr b { font-family:'Special Elite', serif; font-size:11px; color:var(--blood);
+    letter-spacing:.5px; text-transform:uppercase; line-height:1.3; }
+  .v4 .foot .fr span { font-family:'Special Elite', serif; font-size:9.5px; color:rgba(21,17,14,.7);
+    text-transform:uppercase; letter-spacing:1px; margin-top:1px; }
+
+  /* =========================================================
+     VERSION E — A Fornalha (capa fotográfica + cardápio noturno)
+     ========================================================= */
+  .v6 { width:520px; height:735px; position:relative; overflow:hidden; background:#050403; }
+  .v6 .photo-bg { position:absolute; inset:0; }
+  .v6 .photo-bg img { width:100%; height:100%; object-fit:cover; object-position:56% 40%; display:block; }
+  .v6 .shade { position:absolute; inset:0; pointer-events:none;
+    background:
+      linear-gradient(180deg, rgba(5,4,3,.62) 0%, rgba(5,4,3,.18) 20%, rgba(5,4,3,0) 36%, rgba(5,4,3,0) 62%, rgba(5,4,3,.45) 82%, rgba(5,4,3,.85) 100%); }
+  .v6 .grain6 { position:absolute; inset:0; pointer-events:none; opacity:.14; mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size:190px 190px; }
+  .v6 .border6 { position:absolute; inset:14px; border:1px solid rgba(233,226,207,.28); pointer-events:none; }
+  .v6 .border6::after { content:''; position:absolute; inset:4px; border:1px solid rgba(233,226,207,.14); }
+  .v6 .inner { position:relative; z-index:3; height:100%; padding:40px 30px 30px;
+    display:flex; flex-direction:column; align-items:center; text-align:center; }
+  .v6 .ttl { font-family:'UnifrakturCook', cursive; font-weight:700; font-size:71px; line-height:1;
+    color:#c81a20; margin-top:0; white-space:nowrap;
+    text-shadow:0 0 22px rgba(200,26,32,.55), 0 0 60px rgba(200,26,32,.3), 0 2px 3px rgba(0,0,0,.8); }
+  .v6 .logo { width:400px; max-width:100%; height:auto; margin-top:6px; display:block;
+    filter:
+      drop-shadow(0 0 18px rgba(200,26,32,.5))
+      drop-shadow(0 0 42px rgba(200,26,32,.28))
+      drop-shadow(0 3px 6px rgba(0,0,0,.85)); }
+  .v6 .sub6 { font-family:'IM Fell English', serif; font-style:italic; font-size:16px;
+    color:rgba(233,226,207,.9); margin-top:9px; text-shadow:0 1px 3px rgba(0,0,0,.9); }
+  .v6 .orn6 { color:rgba(200,26,32,.85); font-size:11px; letter-spacing:9px; margin-top:8px;
+    text-shadow:0 0 10px rgba(200,26,32,.5); }
+  .v6 .menu-invite { margin-top:auto; display:flex; flex-direction:column; align-items:center; gap:7px;
+    padding-bottom:6px; }
+  .v6 .company { display:flex; flex-direction:column; align-items:center; gap:6px; margin-top:20px; }
+  .v6 .company img { width:66px; height:auto; display:block;
+    filter:brightness(0) invert(1) drop-shadow(0 2px 6px rgba(0,0,0,.85)); }
+  .v6 .company span { font-family:'Special Elite', serif; font-size:9px; letter-spacing:2.5px;
+    text-transform:uppercase; color:rgba(233,226,207,.62); text-shadow:0 1px 3px rgba(0,0,0,.9);
+    white-space:nowrap; }
+  .v6 .menu-invite .rule6 { width:170px; border-top:1px solid rgba(233,226,207,.3); }
+  .v6 .menu-invite .bill { font-family:'Cinzel', serif; font-weight:600; letter-spacing:7px;
+    text-transform:uppercase; font-size:15px; color:#e9e2cf; text-shadow:0 1px 4px rgba(0,0,0,.9); }
+  .v6 .menu-invite .hint { font-family:'Special Elite', serif; font-size:9.5px; letter-spacing:2px;
+    text-transform:uppercase; color:rgba(233,226,207,.6); }
+  .v6 .foot6 { margin-top:16px; width:100%; border-top:1px solid rgba(233,226,207,.25);
+    padding-top:10px; display:flex; justify-content:space-between; align-items:baseline; }
+  .v6 .foot6 b { font-family:'Playfair Display', serif; font-size:13px; letter-spacing:.5px; color:#e9e2cf; }
+  .v6 .foot6 span { font-family:'Special Elite', serif; font-size:9px; letter-spacing:1.5px;
+    text-transform:uppercase; color:rgba(233,226,207,.65); }
+  .v6 .foot6 .dt { color:#c81a20; text-shadow:0 0 8px rgba(200,26,32,.4); }
+
+  /* ---- E · página interna: cardápio noturno ---- */
+  .v7 { width:520px; height:735px; position:relative; overflow:hidden;
+    background:
+      radial-gradient(90% 60% at 50% 108%, #3a0507 0%, #1a0505 42%, #0a0504 72%, #050403 100%);
+    color:#e9e2cf; font-family:'Special Elite', serif; }
+  .v7 .emberglow { position:absolute; inset:0; pointer-events:none;
+    background:
+      radial-gradient(55% 34% at 50% 106%, rgba(200,26,32,.38), transparent 70%),
+      radial-gradient(30% 20% at 22% 100%, rgba(200,26,32,.18), transparent 70%),
+      radial-gradient(30% 20% at 80% 102%, rgba(200,26,32,.2), transparent 70%); }
+  .v7 .smoke7 { position:absolute; inset:0; pointer-events:none; opacity:.5; mix-blend-mode:screen;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='420'%3E%3Cfilter id='s'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.008 0.016' numOctaves='4' seed='14'/%3E%3CfeColorMatrix values='0 0 0 0 0.45 0 0 0 0 0.08 0 0 0 0 0.07 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23s)'/%3E%3C/svg%3E");
+    background-size:cover; }
+  .v7 .grain7 { position:absolute; inset:0; pointer-events:none; opacity:.16; mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size:190px 190px; }
+  .v7 .vig7 { position:absolute; inset:0; pointer-events:none;
+    box-shadow: inset 0 0 90px rgba(0,0,0,.85), inset 0 0 30px rgba(0,0,0,.6); }
+  .v7 .border7 { position:absolute; inset:14px; border:1px solid rgba(233,226,207,.26); pointer-events:none; }
+  .v7 .border7::after { content:''; position:absolute; inset:4px; border:1px solid rgba(233,226,207,.12); }
+  .v7 .blood7 { position:absolute; inset:0; pointer-events:none; z-index:2; mix-blend-mode:screen; }
+  .v7 .inner { position:relative; z-index:3; height:100%; padding:30px 32px 22px;
+    display:flex; flex-direction:column; }
+  .v7 .est { text-align:center; font-family:'IM Fell English SC', serif; letter-spacing:4px;
+    text-transform:uppercase; font-size:10.5px; color:rgba(233,226,207,.7); }
+  .v7 .ttl { text-align:center; font-family:'UnifrakturCook', cursive; font-weight:700;
+    font-size:46px; line-height:.95; color:#c81a20; margin:3px 0 0;
+    text-shadow:0 0 18px rgba(200,26,32,.5), 0 0 48px rgba(200,26,32,.25); }
+  .v7 .sub { text-align:center; font-family:'IM Fell English', serif; font-style:italic;
+    font-size:18px; color:rgba(233,226,207,.85); margin-top:3px; }
+  .v7 .orn { text-align:center; color:rgba(200,26,32,.8); font-size:10px; letter-spacing:9px;
+    margin:7px 0 5px; text-shadow:0 0 8px rgba(200,26,32,.4); }
+  .v7 .fare { font-family:'Cinzel', serif; font-weight:600; letter-spacing:8px;
+    text-transform:uppercase; font-size:16px; color:#e9e2cf; margin:0 0 3px 2px; }
+  .v7 .menu { margin-top:3px; }
+  .v7 .item { display:flex; align-items:center; gap:14px; padding:4.5px 0;
+    border-bottom:1px dotted rgba(233,226,207,.28); }
+  .v7 .item:first-child { border-top:1px dotted rgba(233,226,207,.28); }
+  .v7 .thumb { position:relative; width:46px; height:42px; flex-shrink:0; }
+  .v7 .thumb .frame { width:100%; height:100%; border:1px solid rgba(233,226,207,.4);
+    background:linear-gradient(160deg, #1c1410 0%, #241a14 60%, #17100c 100%);
+    box-shadow:inset 0 0 12px rgba(0,0,0,.8), 0 0 8px rgba(200,26,32,.12);
+    display:flex; align-items:center; justify-content:center; }
+  .v7 .thumb .frame span { font-family:'Special Elite', serif; font-size:7.5px; line-height:1.3;
+    letter-spacing:1px; text-transform:uppercase; color:rgba(233,226,207,.42); text-align:center; }
+  .v7 .thumb .no { position:absolute; bottom:-3px; right:-5px; background:#c81a20; color:#0a0504;
+    font-family:'Special Elite', serif; font-size:8px; padding:0 4px; letter-spacing:.5px; z-index:3;
+    box-shadow:0 0 8px rgba(200,26,32,.5); }
+  .v7 .item .body { flex:1; min-width:0; }
+  .v7 .item .nm { font-family:'Playfair Display', serif; font-weight:800; font-size:16.5px;
+    line-height:1; color:#e9e2cf; }
+  .v7 .item .nm small { font-family:'IM Fell English', serif; font-style:italic; font-weight:400;
+    font-size:12.5px; color:#d4494e; margin-left:8px; }
+  .v7 .item .desc { font-family:'Special Elite', serif; font-size:9.5px; letter-spacing:.4px;
+    color:rgba(233,226,207,.55); margin-top:4px; text-transform:uppercase; }
+  .v7 .item .price { font-family:'Playfair Display', serif; font-weight:700; font-size:14.5px;
+    color:#c81a20; white-space:nowrap; text-align:right; text-shadow:0 0 10px rgba(200,26,32,.35); }
+  .v7 .stamp { position:absolute; z-index:6; top:56px; right:30px; transform:rotate(-12deg);
+    border:3px double #c81a20; color:#c81a20; padding:5px 11px; text-align:center;
+    font-family:'IM Fell English SC', serif; text-transform:uppercase; line-height:1.05;
+    background:rgba(5,4,3,.55); box-shadow:0 0 14px rgba(200,26,32,.25);
+    text-shadow:0 0 8px rgba(200,26,32,.4); }
+  .v7 .stamp b { display:block; font-size:16px; letter-spacing:1px; }
+  .v7 .stamp span { display:block; font-size:8px; letter-spacing:2px; }
+  .v7 .foot { margin-top:auto; padding-top:9px; border-top:1px solid rgba(233,226,207,.3);
+    display:grid; grid-template-columns:auto 1fr auto; align-items:stretch; }
+  .v7 .foot .k { font-family:'IM Fell English SC', serif; text-transform:uppercase; letter-spacing:1.5px;
+    font-size:7.5px; color:#d4494e; display:block; }
+  .v7 .foot b { font-family:'Playfair Display', serif; color:#e9e2cf; }
+  .v7 .foot .fl { display:flex; flex-direction:column; justify-content:flex-end; gap:1px; padding-right:14px; }
+  .v7 .foot .fl b { font-size:16px; letter-spacing:.5px; line-height:1; margin:2px 0 1px; }
+  .v7 .foot .fl .a { font-family:'Special Elite', serif; font-size:8.5px; letter-spacing:.5px;
+    color:rgba(233,226,207,.55); text-transform:uppercase; }
+  .v7 .foot .fc { border-left:1px solid rgba(233,226,207,.22); border-right:1px solid rgba(233,226,207,.22);
+    padding:1px 12px; display:flex; flex-direction:column; gap:5px; justify-content:center; }
+  .v7 .foot .credits { display:grid; grid-template-columns:repeat(3,1fr); gap:3px 8px; text-align:center; }
+  .v7 .foot .credits .k { font-size:7px; letter-spacing:1px; white-space:nowrap; }
+  .v7 .foot .credits b { font-size:10px; line-height:1.05; white-space:nowrap; letter-spacing:0; }
+  .v7 .foot .dur { text-align:center; }
+  .v7 .foot .dur b { font-size:10px; }
+  .v7 .foot .fr { display:flex; flex-direction:column; justify-content:flex-end; text-align:right; padding-left:14px; }
+  .v7 .foot .fr b { font-family:'Special Elite', serif; font-size:10.5px; color:#c81a20;
+    letter-spacing:.5px; text-transform:uppercase; line-height:1.3; text-shadow:0 0 8px rgba(200,26,32,.35); }
+  .v7 .foot .fr span { font-family:'Special Elite', serif; font-size:9px; color:rgba(233,226,207,.55);
+    text-transform:uppercase; letter-spacing:1px; margin-top:1px; }
+
+  /* =========================================================
+     NIGHT CARDÁPIO PAGES (Staff / Personagens / Ensemble)
+     Reuse v7 night-in-embers background
+     ========================================================= */
+  .np { width:520px; height:735px; position:relative; overflow:hidden;
+    background: #14091a;
+    color:#e9e2cf; font-family:'Special Elite', serif; }
+  .np .tex-bg { position:absolute; inset:0; z-index:0; }
+  .np .tex-bg img { width:100%; height:100%; object-fit:cover; display:block; }
+  .np .emberglow { position:absolute; inset:0; pointer-events:none;
+    background:
+      radial-gradient(52% 32% at 50% 108%, rgba(200,40,42,.40), transparent 70%),
+      radial-gradient(40% 30% at 84% -8%, rgba(74,90,160,.22), transparent 70%),
+      radial-gradient(38% 28% at 12% -4%, rgba(66,80,150,.16), transparent 72%); }
+  .np .smoke7 { position:absolute; inset:0; pointer-events:none; opacity:.5; mix-blend-mode:screen;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='420'%3E%3Cfilter id='s'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.008 0.016' numOctaves='4' seed='14'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.12 0 0 0 0 0.30 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23s)'/%3E%3C/svg%3E");
+    background-size:cover; }
+  .np .grain7 { position:absolute; inset:0; pointer-events:none; opacity:.16; mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size:190px 190px; }
+  .np .vig7 { position:absolute; inset:0; pointer-events:none;
+    box-shadow: inset 0 0 90px rgba(0,0,0,.85), inset 0 0 30px rgba(0,0,0,.6); }
+  .np .border7 { position:absolute; inset:14px; border:1px solid rgba(233,226,207,.26); pointer-events:none; }
+  .np .border7::after { content:''; position:absolute; inset:4px; border:1px solid rgba(233,226,207,.12); }
+  .np .blood7 { position:absolute; inset:0; pointer-events:none; z-index:2; mix-blend-mode:screen; }
+  .np .inner { position:relative; z-index:3; height:100%; padding:30px 32px 22px;
+    display:flex; flex-direction:column; }
+  .np .est { text-align:center; font-family:'IM Fell English SC', serif; letter-spacing:4px;
+    text-transform:uppercase; font-size:10.5px; color:rgba(233,226,207,.7); }
+  .np .ttl { text-align:center; font-family:'UnifrakturCook', cursive; font-weight:700;
+    font-size:46px; line-height:.95; color:#c81a20; margin:3px 0 0;
+    text-shadow:0 0 18px rgba(200,26,32,.5), 0 0 48px rgba(200,26,32,.25); }
+  .np .sub { text-align:center; font-family:'IM Fell English', serif; font-style:italic;
+    font-size:18px; color:rgba(233,226,207,.85); margin-top:3px; }
+  .np .orn { text-align:center; color:rgba(200,26,32,.8); font-size:10px; letter-spacing:9px;
+    margin:7px 0 5px; text-shadow:0 0 8px rgba(200,26,32,.4); }
+  .np .fare { font-family:'Cinzel', serif; font-weight:600; letter-spacing:7px;
+    text-transform:uppercase; font-size:15px; color:#e9e2cf; margin:0 0 3px 2px;
+    display:flex; align-items:center; gap:12px; }
+  .np .fare::after { content:''; flex:1; border-top:1px solid rgba(233,226,207,.24); }
+
+  .np .foot { margin-top:auto; padding-top:9px; border-top:1px solid rgba(233,226,207,.3);
+    display:grid; grid-template-columns:auto 1fr auto; align-items:stretch; }
+  .np .foot .k { font-family:'IM Fell English SC', serif; text-transform:uppercase; letter-spacing:1.5px;
+    font-size:7.5px; color:#d4494e; display:block; }
+  .np .foot b { font-family:'Playfair Display', serif; color:#e9e2cf; }
+  .np .foot .fl { display:flex; flex-direction:column; justify-content:flex-end; gap:1px; padding-right:14px; }
+  .np .foot .fl b { font-size:16px; letter-spacing:.5px; line-height:1; margin:2px 0 1px; }
+  .np .foot .fl .a { font-family:'Special Elite', serif; font-size:8.5px; letter-spacing:.5px;
+    color:rgba(233,226,207,.55); text-transform:uppercase; }
+  .np .foot .fc { border-left:1px solid rgba(233,226,207,.22); border-right:1px solid rgba(233,226,207,.22);
+    padding:1px 12px; display:flex; flex-direction:column; gap:5px; justify-content:center; }
+  .np .foot .credits { display:grid; grid-template-columns:repeat(3,1fr); gap:3px 8px; text-align:center; }
+  .np .foot .credits .k { font-size:7px; letter-spacing:1px; white-space:nowrap; }
+  .np .foot .credits b { font-size:10px; line-height:1.05; white-space:nowrap; letter-spacing:0; }
+  .np .foot .dur { text-align:center; }
+  .np .foot .dur b { font-size:10px; }
+  .np .foot .fr { display:flex; flex-direction:column; justify-content:flex-end; text-align:right; padding-left:14px; }
+  .np .foot .fr b { font-family:'Special Elite', serif; font-size:10.5px; color:#c81a20;
+    letter-spacing:.5px; text-transform:uppercase; line-height:1.3; text-shadow:0 0 8px rgba(200,26,32,.35); }
+  .np .foot .fr span { font-family:'Special Elite', serif; font-size:9px; color:rgba(233,226,207,.55);
+    text-transform:uppercase; letter-spacing:1px; margin-top:1px; }
+
+  /* ---- Cast cards · big square photos (3-up grid) ---- */
+  .np .castarea { flex:1; display:flex; flex-direction:column; justify-content:center; margin:6px 0; }
+  .np .castarea .lead-in { text-align:center; font-family:'IM Fell English', serif; font-style:italic;
+    font-size:14.5px; color:rgba(233,226,207,.8); margin:2px auto 20px; max-width:400px; line-height:1.5; }
+  .np .castarea.withlead .grid3.big { gap:26px 24px; }
+  .np .castarea.withlead .grid3.big .chef { width:170px; }
+  .np .castarea.withlead .grid3.big .chef .ph { height:170px; }
+  .np .castarea.withlead .grid3.big .chef .nm { font-size:17px; }
+  .np .grid3 { display:flex; flex-wrap:wrap; justify-content:center; gap:26px 20px; }
+  /* páginas com poucas pessoas → fotos maiores, 2 por linha */
+  .np .grid3.big { gap:30px 26px; }
+  .np .grid3.big .chef { width:196px; }
+  .np .grid3.big .chef .ph { height:196px; }
+  .np .grid3.big .chef .nm { font-size:18.5px; }
+  .np .grid3.big .chef .flavor { font-size:12px; letter-spacing:2px; }
+  .np .grid3.big .chef .ph .pin { width:13px; height:13px; top:-9px; }
+
+  /* ---- páginas intermediárias · fotos do espetáculo ---- */
+  .np .fp-slots { position:absolute; inset:0; z-index:2; }
+  .np .fp-slots image-slot { position:absolute; display:block; }
+  .np.fp .grain7, .np.fp .vig7, .np.fp .border7 { z-index:4; }
+  .np.fp .ring { position:absolute; border-radius:50%; background:#140b1e; padding:8px;
+    box-shadow:0 6px 24px rgba(0,0,0,.55), 0 0 18px rgba(200,40,46,.18); }
+  .np.fp .ring image-slot { position:relative; width:100%; height:100%; }
+  .np .chef { width:138px; display:flex; flex-direction:column; align-items:center; text-align:center; }
+  .np .chef .ph { position:relative; width:100%; height:138px; }
+  .np .chef .ph .pin { position:absolute; top:-8px; left:50%; transform:translateX(-50%) rotate(45deg);
+    width:11px; height:11px; background:#c22a2e; z-index:3; box-shadow:0 0 8px rgba(200,40,46,.55); }
+  .np .chef .ph img, .np .chef .ph .placeholder { width:100%; height:100%; object-fit:cover; display:block;
+    border:1px solid rgba(233,226,207,.34);
+    box-shadow:inset 0 0 24px rgba(0,0,0,.6), 0 4px 16px rgba(0,0,0,.55), 0 0 16px rgba(120,54,86,.22);
+    filter:saturate(.94) contrast(1.02); }
+  .np .chef .ph .placeholder { display:flex; align-items:center; justify-content:center; text-align:center;
+    background:linear-gradient(160deg, #241026 0%, #2a1430 60%, #160a1c 100%);
+    font-family:'Special Elite', serif; font-size:9px; letter-spacing:1px; text-transform:uppercase;
+    color:rgba(233,226,207,.42); padding:8px; }
+  .np .chef .nm { font-family:'Playfair Display', serif; font-weight:800; font-size:15px;
+    color:#f0e9d8; line-height:1.15; margin-top:11px; white-space:nowrap; }
+  .np .chef .flavor { font-family:'IM Fell English SC', serif; text-transform:uppercase;
+    letter-spacing:1.6px; font-size:10.5px; color:#c67a52; margin-top:5px; line-height:1.25;
+    text-shadow:0 0 8px rgba(160,80,50,.25); }
+
+  /* ---- Equipe Técnica (contracapa · sem foto) ---- */
+  .np .tech { flex:1; display:flex; flex-direction:column; justify-content:center; margin:6px 0; }
+  .np .tech .rows { display:flex; flex-direction:column; gap:24px; }
+  .np .tech .row { display:flex; justify-content:center; align-items:flex-start; gap:44px; }
+  .np .tech .blk { display:flex; flex-direction:column; gap:5px; text-align:center; align-items:center; }
+  .np .tech .row > .blk { flex:1; }
+  .np .tech .row > .blk.wide { flex:1 1 100%; }
+  .np .tech .blk .k { font-family:'IM Fell English SC', serif; text-transform:uppercase;
+    letter-spacing:2.5px; font-size:12px; color:#d4494e; text-shadow:0 0 8px rgba(200,26,32,.3); white-space:nowrap; }
+  .np .tech .blk .v { font-family:'Playfair Display', serif; font-weight:700; font-size:17px;
+    color:#f0e9d8; line-height:1.25; white-space:nowrap; }
+  .np .tech .blk .role { font-family:'IM Fell English', serif; font-style:italic; font-weight:400;
+    font-size:12.5px; color:rgba(233,226,207,.6); margin-top:-2px; }
+  .np .tech .blk .gap { height:7px; }
+  .np .tech .sep { height:1px; margin:2px 0;
+    background:linear-gradient(90deg, transparent, rgba(233,226,207,.32), transparent); }
+  .np .tech .blk.small .v { font-size:14.5px; font-weight:400; font-family:'IM Fell English', serif;
+    line-height:1.4; color:rgba(233,226,207,.85); white-space:normal; }
+
+  /* ---- Repertório Musical (sem foto) ---- */
+  .np .songs { flex:1; display:flex; gap:26px; margin:10px 0 2px; align-items:flex-start;
+    justify-content:center; }
+  .np .songs .act { flex:1; display:flex; flex-direction:column; gap:8px; max-width:220px; }
+  .np .songs .act-h { font-family:'Cinzel', serif; font-weight:700; letter-spacing:3px;
+    text-transform:uppercase; font-size:14px; color:#d4494e; text-align:center;
+    text-shadow:0 0 8px rgba(200,26,32,.35); padding-bottom:6px; margin-bottom:2px;
+    border-bottom:1px solid rgba(233,226,207,.2); }
+  .np .songs ol { list-style:none; display:flex; flex-direction:column; gap:6px; }
+  .np .songs li { display:flex; gap:9px; align-items:baseline;
+    font-family:'IM Fell English', serif; font-size:13.5px; color:#f0e9d8; line-height:1.28; }
+  .np .songs li .n { flex:none; font-family:'Playfair Display', serif; font-weight:700;
+    font-size:12px; color:rgba(200,26,32,.85); min-width:15px; text-align:right; }
+  .np .songs li em { font-style:italic; color:rgba(233,226,207,.6); }
+</style>
+<style id="flipbook-ui">
+  :root{ --flip-red:#c81a20; --frame-h:94svh; }
+  html,body{ height:100%; overflow:hidden; background:#0a0807; color:#e9e2cf;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; }
+  #root{ height:100svh; }
+
+  .deck{ display:flex; height:100svh; width:100vw; overflow-x:scroll; overflow-y:hidden;
+    scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
+  .deck::-webkit-scrollbar{ display:none; }
+
+  .slide{ flex:0 0 100vw; height:100svh; scroll-snap-align:center; scroll-snap-stop:always;
+    display:flex; align-items:center; justify-content:center; }
+
+  .stage{ position:relative; aspect-ratio:520/735; height:var(--frame-h);
+    max-height:100svh; max-width:100vw; overflow:hidden; background:#050403;
+    border-radius:14px; box-shadow:0 22px 60px rgba(0,0,0,.6); }
+  @media (max-aspect-ratio:520/735){
+    .stage{ height:auto; width:100vw; border-radius:0; box-shadow:none; }
+  }
+
+  .page-holder{ position:absolute; top:0; left:0; width:520px; height:735px;
+    transform-origin:top left; }
+
+  /* página de imagem inteira (prévia diagramada) */
+  .imgpage{ width:520px; height:735px; overflow:hidden; background:#050403; }
+  .imgpage img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+  .counter{ position:fixed; top:14px; left:50%; transform:translateX(-50%); z-index:5;
+    padding:6px 15px; border-radius:999px; background:rgba(0,0,0,.45);
+    -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
+    font-size:12px; letter-spacing:2px; font-variant-numeric:tabular-nums;
+    pointer-events:none; opacity:.9; }
+  .counter b{ color:var(--flip-red); font-weight:700; }
+  .counter span{ opacity:.7; }
+
+  .progress{ position:fixed; left:0; bottom:0; width:100%; height:3px; z-index:5;
+    background:rgba(255,255,255,.08); }
+  .progress__fill{ height:100%; width:0; background:var(--flip-red);
+    box-shadow:0 0 10px rgba(200,26,32,.7); transition:width .1s linear; }
+
+  .swipe-hint{ position:fixed; bottom:24px; left:50%; transform:translateX(-50%); z-index:6;
+    display:flex; align-items:center; gap:9px; padding:9px 16px 9px 18px; border-radius:999px;
+    background:rgba(0,0,0,.5); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
+    font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:#e9e2cf;
+    pointer-events:none; transition:opacity .5s ease; animation:flip-hint 2.6s ease-in-out infinite; }
+  .swipe-hint.hidden{ opacity:0; }
+  .swipe-hint .arrow{ display:inline-flex; animation:flip-swipe 1.5s cubic-bezier(.45,0,.25,1) infinite; }
+  @keyframes flip-swipe{ 0%{transform:translateX(-7px);opacity:.35;} 45%{transform:translateX(7px);opacity:1;}
+    70%{transform:translateX(7px);opacity:1;} 100%{transform:translateX(-7px);opacity:.35;} }
+  @keyframes flip-hint{ 0%,100%{box-shadow:0 0 0 0 rgba(255,255,255,0);} 50%{box-shadow:0 0 0 4px rgba(255,255,255,.06);} }
+  @media (prefers-reduced-motion:reduce){ .swipe-hint,.swipe-hint .arrow{ animation:none; } }
+
+  /* ===== ANIMAÇÕES IDLE (só na página ativa) — tema Sweeney Todd / intensidade média ===== */
+  @keyframes idleEmber{
+    0%,100%{ text-shadow:0 0 18px rgba(200,26,32,.5), 0 0 48px rgba(200,26,32,.25); }
+    50%    { text-shadow:0 0 30px rgba(200,26,32,.95), 0 0 80px rgba(200,26,32,.6), 0 0 130px rgba(200,26,32,.3); }
+  }
+  @keyframes idleOrn{
+    0%,100%{ text-shadow:0 0 8px rgba(200,26,32,.4); opacity:.8; }
+    50%    { text-shadow:0 0 18px rgba(200,26,32,.95), 0 0 34px rgba(200,26,32,.5); opacity:1; }
+  }
+  @keyframes idleGlowSm{
+    0%,100%{ text-shadow:0 0 8px rgba(200,26,32,.3); }
+    50%    { text-shadow:0 0 18px rgba(200,26,32,.85); }
+  }
+  @keyframes idleBreath{
+    0%,100%{ transform:scale(1); }
+    50%    { transform:scale(1.07); }
+  }
+  @keyframes idleFire{
+    0%,100%{ filter:brightness(1) saturate(1); }
+    20%    { filter:brightness(1.09) saturate(1.08); }
+    36%    { filter:brightness(.96) saturate(1); }
+    54%    { filter:brightness(1.12) saturate(1.1); }
+    70%    { filter:brightness(1.0) saturate(1.03); }
+    85%    { filter:brightness(1.07) saturate(1.06); }
+  }
+  @keyframes idleLogoGlow{
+    0%,100%{ filter:drop-shadow(0 0 18px rgba(200,26,32,.5)) drop-shadow(0 0 42px rgba(200,26,32,.28)) drop-shadow(0 3px 6px rgba(0,0,0,.85)); }
+    50%    { filter:drop-shadow(0 0 34px rgba(200,26,32,.9)) drop-shadow(0 0 72px rgba(200,26,32,.55)) drop-shadow(0 3px 6px rgba(0,0,0,.85)); }
+  }
+  @keyframes idleFloat{
+    0%,100%{ transform:translateY(0); }
+    50%    { transform:translateY(-9px); }
+  }
+  @keyframes idleBob{
+    0%,100%{ transform:translateY(0); }
+    50%    { transform:translateY(-8px); }
+  }
+  @keyframes idleSep{
+    0%,100%{ opacity:.4; }
+    50%    { opacity:1; }
+  }
+
+  /* comum às páginas de conteúdo (.np): título brasa + ornamento pulsando */
+  .slide.is-active .np .ttl{ animation:idleEmber 5s ease-in-out infinite; will-change:text-shadow; }
+  .slide.is-active .np .orn{ animation:idleOrn 4s ease-in-out infinite; }
+
+  /* CAPA (.v6): cena respira + fogo do forno tremeluz + logo brasa/flutua */
+  .slide.is-active .v6 .photo-bg img{ animation:idleBreath 18s ease-in-out infinite, idleFire 5.5s ease-in-out infinite; will-change:transform,filter; }
+  .slide.is-active .v6 .logo{ animation:idleLogoGlow 4.5s ease-in-out infinite, idleFloat 6s ease-in-out infinite; will-change:transform,filter; }
+
+  /* PÁGINA DE IMAGEM: a colagem respira lentamente */
+  .slide.is-active .imgpage img{ animation:idleBreath 20s ease-in-out infinite; will-change:transform; }
+
+  /* ELENCO: retratos balançam suavemente (escalonado, como pendurados na loja) */
+  .slide.is-active .np .grid3 .chef{ animation:idleBob 6s ease-in-out infinite; will-change:transform; }
+  .slide.is-active .np .grid3 .chef:nth-child(2){ animation-delay:-1.5s; }
+  .slide.is-active .np .grid3 .chef:nth-child(3){ animation-delay:-3s; }
+  .slide.is-active .np .grid3 .chef:nth-child(4){ animation-delay:-4.5s; }
+
+  /* REPERTÓRIO: cabeçalhos dos atos com brasa (defasados) */
+  .slide.is-active .np .songs .act-h{ animation:idleGlowSm 4.5s ease-in-out infinite; }
+  .slide.is-active .np .songs .act:nth-child(2) .act-h{ animation-delay:-2.2s; }
+
+  /* EQUIPE TÉCNICA: separadores cintilam + rótulos vermelhos com brasa */
+  .slide.is-active .np .tech .sep{ animation:idleSep 3.5s ease-in-out infinite; }
+  .slide.is-active .np .tech .blk .k{ animation:idleGlowSm 5s ease-in-out infinite; }
+
+  @media (prefers-reduced-motion:reduce){
+    .slide.is-active .np .ttl, .slide.is-active .np .orn,
+    .slide.is-active .v6 .photo-bg img, .slide.is-active .v6 .logo, .slide.is-active .imgpage img,
+    .slide.is-active .np .grid3 .chef, .slide.is-active .np .songs .act-h,
+    .slide.is-active .np .tech .sep, .slide.is-active .np .tech .blk .k{ animation:none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="counter" id="counter"><b>1</b> <span>/ 11</span></div>
+
+<div class="swipe-hint" id="swipeHint">
+  <span>arraste</span>
+  <span class="arrow" aria-hidden="true">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h13M12 6l6 6-6 6"/></svg>
+  </span>
+</div>
+
+<div class="progress" id="progress"><div class="progress__fill" id="progressFill"></div></div>
+
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel">
+
+
+/* seeded blood-splatter generator */
+const RNG = (seed) => {let a = seed >>> 0;return () => {a = a + 0x6D2B79F5 | 0;let t = Math.imul(a ^ a >>> 15, 1 | a);t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;return ((t ^ t >>> 14) >>> 0) / 4294967296;};};
+function splatDrops(seed, n) {
+  const r = RNG(seed);const d = [];
+  d.push({ x: 100, y: 100, r: 24 + r() * 14 });
+  d.push({ x: 100 + (-18 + r() * 36), y: 100 + (-18 + r() * 36), r: 13 + r() * 12 });
+  d.push({ x: 100 + (-18 + r() * 36), y: 100 + (-18 + r() * 36), r: 9 + r() * 9 });
+  for (let i = 0; i < n; i++) {
+    const ang = r() * 6.2832,dist = 26 + r() * 80,rad = 1 + r() * r() * 11;
+    d.push({ x: 100 + Math.cos(ang) * dist, y: 100 + Math.sin(ang) * dist, r: rad });
+  }
+  return d;
+}
+function Splat({ seed = 1, n = 22, scale = 40, color = '#5e0a0d', freq = 0.045, style }) {
+  const id = 'sf' + seed;
+  const drops = React.useMemo(() => splatDrops(seed, n), [seed, n]);
+  return (
+    <svg className="splat" style={style} viewBox="0 0 200 200" preserveAspectRatio="none">
+      <defs>
+        <filter id={id} x="-35%" y="-35%" width="170%" height="170%">
+          <feTurbulence type="fractalNoise" baseFrequency={freq} numOctaves="3" seed={seed} result="n" />
+          <feDisplacementMap in="SourceGraphic" in2="n" scale={scale} xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+      </defs>
+      <g filter={`url(#${id})`} fill={color}>
+        {drops.map((p, i) => <circle key={i} cx={p.x} cy={p.y} r={p.r} />)}
+      </g>
+    </svg>);
+}
+
+/* ---------- VERSION E — A Fornalha (capa foto + cardápio noturno) ---------- */
+function VersionE1() {
+  return (
+    <div className="v6" data-screen-label="Versão E · Capa">
+      <div className="photo-bg"><img src="assets/capa-foto-2.jpg" alt="Sweeney e Mrs. Lovett à porta da fornalha" /></div>
+      <div className="shade"></div>
+      <div className="grain6"></div>
+      <div className="border6"></div>
+      <div className="inner">
+        <img className="logo" src="assets/logo-sweeney.png" alt="Sweeney Todd — O Cruel Barbeiro da Rua Fleet" />
+        <div className="menu-invite">
+          <div className="rule6"></div>
+          <div className="bill">Cardápio do Dia</div>
+          <div className="rule6"></div>
+        </div>
+        <div className="company">
+          <span>Uma produção da</span>
+          <img src="assets/logo-pace.png" alt="Companhia PACE — Danças &amp; Artes" />
+        </div>
+      </div>
+    </div>);
+}
+
+/* ---------- Cast pages (elenco real · double cast) ---------- */
+const STAFF = [
+{ name: 'Brenda Bertozzi', role: 'Coreógrafa', flavor: 'torta de coreógrafa', img: 'assets/cast/brenda-bertozzi.jpg' },
+{ name: 'Luan Domingues', role: 'Diretor Geral', flavor: 'torta de diretor geral', img: 'assets/cast/luan-domingues.jpg' },
+{ name: 'Gabriel Campos', role: 'Diretor Vocal', flavor: 'torta de diretor vocal', img: 'assets/cast/gabriel-campos-novo.jpg' }];
+
+const PERSONAGENS = [
+{ name: 'Joaquim Pomarico', role: 'Sweeney / Juiz', flavor: 'torta de Sweeney', img: 'assets/cast/joaquim-pomarico.jpg' },
+{ name: 'Carlos Fadiga', role: 'Sweeney / Juiz', flavor: 'torta de Sweeney', img: 'assets/cast/carlos-fadiga.jpg' },
+{ name: 'Lara Marta', role: 'Mrs. Lovett', flavor: 'torta de Lovett', img: 'assets/cast/lara-marta.jpg' },
+{ name: 'Alaiane Fartes', role: 'Mrs. Lovett', flavor: 'torta de Lovett', img: 'assets/cast/alaiane-fartes.jpg' },
+{ name: 'Yuri Suheishi', role: 'Anthony', flavor: 'torta de Anthony', img: 'assets/cast/yuri-suheishi.jpg' },
+{ name: 'Pedro Gileno', role: 'Anthony', flavor: 'torta de Anthony', img: 'assets/cast/pedro-gileno.jpg' },
+{ name: 'Samuel Gimenes', role: 'Tobias', flavor: 'torta de Tobias', img: 'assets/cast/samuel-gimenes.jpg' },
+{ name: 'Matheus Bragi', role: 'Tobias', flavor: 'torta de Tobias', img: 'assets/cast/matheus-bragi.jpg' },
+{ name: 'Ligia Fragano', role: 'Mendiga', flavor: 'torta de mendiga', img: 'assets/cast/ligia-fragano.jpg' },
+{ name: 'Marie Prado', role: 'Mendiga', flavor: 'torta de mendiga', img: 'assets/cast/marie-prado.jpg' },
+{ name: 'Gabriel Martins', role: 'Fogg', flavor: 'torta de Fogg', img: 'assets/cast/gabriel-martins.jpg' },
+{ name: 'Pagin', role: 'Fogg', flavor: 'torta de Fogg', img: 'assets/cast/pagin.jpg' },
+{ name: 'Gabriel Porto', role: 'Bedel', flavor: 'torta de Bedel', img: 'assets/cast/gabriel-porto.jpg' },
+{ name: 'Guilherme Assis', role: 'Pirelli', flavor: 'torta de Pirelli', img: 'assets/cast/guilherme-assis.jpg' },
+{ name: 'Liz Dias', role: 'Johanna', flavor: 'torta de Johanna', img: 'assets/cast/liz-dias.jpg' }];
+
+const ENSEMBLE = [
+{ name: 'Jenniffer Vieira', role: 'Ensemble', flavor: 'torta de bailarina', img: 'assets/cast/jenniffer-vieira.jpg' },
+{ name: 'Gabriela Dias', role: 'Ensemble', flavor: 'torta de artista', img: 'assets/cast/gabriela-dias.jpg' },
+{ name: 'Amanda Ricardini', role: 'Ensemble', flavor: 'torta de burguesa', img: 'assets/cast/amanda-ricardini.jpg' },
+{ name: 'Victoria Andrade', role: 'Ensemble', flavor: 'torta de costureira', img: 'assets/cast/victoria-andrade.jpg' },
+{ name: 'Manuela Rossi', role: 'Ensemble', flavor: 'torta de grávida', img: 'assets/cast/manuela-rossi.jpg' },
+{ name: 'Naara Alves', role: 'Ensemble', flavor: 'torta de fofoqueira', img: 'assets/cast/naara-alves.jpg' },
+{ name: 'Larissa Vitti', role: 'Ensemble', flavor: 'torta de fugitiva', img: 'assets/cast/larissa-vitti.jpg' }];
+
+function NpBlood() {
+  return (
+    <div className="blood7">
+      <Splat seed={33} n={20} scale={40} color="#7e0e12" style={{ left: '-38px', top: '-30px', width: '210px', height: '176px', opacity: .55 }} />
+      <Splat seed={37} n={16} scale={36} color="#8e1014" style={{ left: '380px', top: '560px', width: '190px', height: '196px', opacity: .6 }} />
+      <Splat seed={41} n={10} scale={24} color="#7e0e12" style={{ left: '440px', top: '120px', width: '90px', height: '90px', opacity: .42 }} />
+      <Splat seed={43} n={12} scale={28} color="#8e1014" style={{ left: '-26px', top: '600px', width: '130px', height: '140px', opacity: .48 }} />
+    </div>);
+}
+
+function NpFoot() {
+  return (
+    <div className="foot">
+      <div className="fl">
+        <span className="k">Uma produção da</span>
+        <b>CIA. PACE</b>
+        <span className="a">R. Pará, 230 · Centro</span>
+      </div>
+      <div className="fc">
+        <div className="credits">
+          <div><span className="k">Direção</span><b>Luís Pace</b></div>
+          <div><span className="k">Direção Musical</span><b>Mariana Lima</b></div>
+          <div><span className="k">Coreografia</span><b>Felipe Amaral</b></div>
+        </div>
+        <div className="dur"><span className="k">Duração aprox.</span><b>2h30 — com intervalo</b></div>
+      </div>
+      <div className="fr">
+        <b>Out 2026 – Jan 2027</b>
+        <span>Sondheim · Wheeler</span>
+      </div>
+    </div>);
+}
+
+function CastCard({ m, i }) {
+  return (
+    <div className="chef">
+      <div className="ph">
+        {m.img ?
+        <img src={m.img} alt={m.name} /> :
+        <div className="placeholder">Foto<br />em breve</div>}
+      </div>
+      <div className="nm">{m.name}</div>
+      <div className="flavor">{m.flavor}</div>
+    </div>);
+}
+
+function CastPage({ label, title, sub, fare, leadIn, data, tex }) {
+  return (
+    <div className="np" data-screen-label={label}>
+      <div className="tex-bg"><img src={tex} alt="" /></div>
+      <div className="inner">
+        <h1 className="ttl">{title}</h1>
+        <div className="sub">{sub}</div>
+        <div className="orn">✦ ❦ ✦</div>
+        <div className="fare">{fare}</div>
+        <div className={'castarea' + (leadIn ? ' withlead' : '')}>
+          {leadIn ? <div className="lead-in">{leadIn}</div> : null}
+          <div className={'grid3' + (data.length <= 4 ? ' big' : '')}>
+            {data.map((m, i) => <CastCard m={m} i={i} key={i} />)}
+          </div>
+        </div>
+      </div>
+    </div>);
+}
+
+function TechPage({ tex }) {
+  return (
+    <div className="np" data-screen-label="Versão E · Equipe Técnica">
+      <div className="tex-bg"><img src={tex} alt="" /></div>
+      <div className="inner">
+        <h1 className="ttl">Equipe Técnica</h1>
+        <div className="sub">Quem afia a navalha longe dos holofotes</div>
+        <div className="orn">✦ ❦ ✦</div>
+        <div className="fare">Nos Bastidores</div>
+        <div className="tech">
+          <div className="rows">
+            <div className="row">
+              <div className="blk"><span className="k">Sonoplastia</span><span className="v">Gabriel Campos</span></div>
+              <div className="blk"><span className="k">Iluminação</span><span className="v">Luis Cremonezzi</span></div>
+            </div>
+            <div className="row">
+              <div className="blk wide"><span className="k">Cenografia · cadeira</span><span className="v">Evaldo de Oliveira Alves e Moacyr Alves</span></div>
+            </div>
+            <div className="row">
+              <div className="blk"><span className="k">Figurinos</span><span className="v">Hellen Sallis</span><span className="role">concepção</span><span className="gap"></span><span className="v">Victoria Andrade</span><span className="role">confecção</span></div>
+              <div className="blk"><span className="k">Fotografia</span><span className="v">Juninho Garcia</span></div>
+            </div>
+            <div className="sep"></div>
+            <div className="row">
+              <div className="blk wide small"><span className="k">Agradecimentos</span><span className="v">Bia Câmara, Raphael Miranda, Adriano Mesquita</span></div>
+            </div>
+            <div className="row">
+              <div className="blk wide small"><span className="k">Apoio</span><span className="v">TMPC — Teatro Musical Poços de Caldas</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>);
+}
+
+function SongsPage({ tex }) {
+  const ato1 = ['A Balada de Sweeney Todd','Não há nada igual Londres','Torta mais ruim de Londres','Que Fim','Meu Amor','Canário, Andorinha e Pardal','Johanna','O Elixir Pirelli','O Duelo','Beijo','Belas Moças','Epifania','Bom Pastor'];
+  const ato2 = ['Meu Deus, é tão bom!','Johanna Reprise','Junto ao Mar','Eu não vou Deixar','Ruas em Chamas','Belas Moças Reprise','Cena Final','A Balada de Sweeney Todd Reprise'];
+  return (
+    <div className="np" data-screen-label="Versão E · Repertório">
+      <div className="tex-bg"><img src={tex} alt="" /></div>
+      <div className="inner">
+        <h1 className="ttl">Repertório</h1>
+        <div className="sub">As canções servidas esta noite</div>
+        <div className="orn">✦ ❦ ✦</div>
+        <div className="fare">Cardápio Musical</div>
+        <div className="songs">
+          <div className="act">
+            <div className="act-h">Primeiro Ato</div>
+            <ol>
+              {ato1.map((t, i) => (
+                <li key={i}><span className="n">{i + 1}</span><span>{t}</span></li>
+              ))}
+            </ol>
+          </div>
+          <div className="act">
+            <div className="act-h">Segundo Ato</div>
+            <ol>
+              {ato2.map((t, i) => (
+                <li key={i}><span className="n">{i + 1}</span><span>{t}</span></li>
+              ))}
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>);
+}
+
+function App() {
+  return (
+    <DesignCanvas>
+      <DCSection id="fornalha" title="Sweeney Todd — Programa A5" subtitle="Capa com a foto da produção · páginas do elenco em fotos grandes · equipe técnica">
+        <DCArtboard id="vE1" label="Capa · foto da produção" width={520} height={735}>
+          <VersionE1 />
+        </DCArtboard>
+        <DCArtboard id="vE_songs" label="Repertório · músicas" width={520} height={735}>
+          <SongsPage tex="assets/textures/pg3.jpg" />
+        </DCArtboard>
+        <DCArtboard id="vE_staff" label="A Brigada · staff" width={520} height={735}>
+          <CastPage
+            label="Versão E · A Brigada"
+            title="A Brigada"
+            sub="Quem comanda a cozinha da Rua Fleet"
+            fare="Direção &amp; Criação"
+            leadIn="Antes de qualquer torta ir ao forno, são estas mãos que afiam a navalha, marcam o passo e afinam o grito."
+            data={STAFF} tex="assets/textures/pg1.jpg" />
+        </DCArtboard>
+        <DCArtboard id="vE_p1" label="Pratos Principais · I" width={520} height={735}>
+          <CastPage
+            label="Versão E · Personagens I"
+            title="Pratos Principais"
+            sub="A navalha e o forno — dois recheios por prato"
+            fare="Personagens · I"
+            data={PERSONAGENS.slice(0, 4)} tex="assets/textures/pg2.jpg" />
+        </DCArtboard>
+        <DCArtboard id="vE_p2" label="Pratos Principais · II" width={520} height={735}>
+          <CastPage
+            label="Versão E · Personagens II"
+            title="Pratos Principais"
+            sub="Os corações ingênuos da Rua Fleet"
+            fare="Personagens · II"
+            data={PERSONAGENS.slice(4, 8)} tex="assets/textures/pg3.jpg" />
+        </DCArtboard>
+        <DCArtboard id="vE_p3" label="Pratos Principais · III" width={520} height={735}>
+          <CastPage
+            label="Versão E · Personagens III"
+            title="Pratos Principais"
+            sub="A cozinha e as ruas de Londres"
+            fare="Personagens · III"
+            data={PERSONAGENS.slice(8, 12)} tex="assets/textures/pg1.jpg" />
+        </DCArtboard>
+        <DCArtboard id="vE_p4" label="Pratos Principais · IV" width={520} height={735}>
+          <CastPage
+            label="Versão E · Personagens IV"
+            title="Pratos Principais"
+            sub="Guardados do balcão"
+            fare="Personagens · IV"
+            data={PERSONAGENS.slice(12, 15)} tex="assets/textures/pg2.jpg" />
+        </DCArtboard>
+        <DCArtboard id="vE_e1" label="Guarnições · I" width={520} height={735}>
+          <CastPage
+            label="Versão E · Ensemble I"
+            title="Guarnições"
+            sub="O conjunto que tempera as ruas de Londres"
+            fare="Ensemble · I"
+            data={ENSEMBLE.slice(0, 4)} tex="assets/textures/pg3.jpg" />
+        </DCArtboard>
+        <DCArtboard id="vE_e2" label="Guarnições · II" width={520} height={735}>
+          <CastPage
+            label="Versão E · Ensemble II"
+            title="Guarnições"
+            sub="O conjunto que tempera as ruas de Londres"
+            fare="Ensemble · II"
+            data={ENSEMBLE.slice(4, 7)} tex="assets/textures/pg1.jpg" />
+        </DCArtboard>
+        <DCArtboard id="vE_tech" label="Equipe Técnica · contracapa" width={520} height={735}>
+          <TechPage tex="assets/textures/pg2.jpg" />
+        </DCArtboard>
+      </DCSection>
+    </DesignCanvas>);
+
+}
+
+/* ============ FLIPBOOK (viewer estilo ProgramaSplit) ============ */
+function FlipPage({ children }) {
+  return (
+    <div className="stage">
+      <div className="page-holder">{children}</div>
+    </div>);
+}
+
+function ImagePage({ src, alt }) {
+  return (
+    <div className="imgpage">
+      <img src={src} alt={alt} />
+    </div>);
+}
+
+const FLIP_PAGES = [
+  <VersionE1 />,
+  <SongsPage tex="assets/textures/pg3.jpg" />,
+  <CastPage
+    label="Versão E · A Brigada" title="A Brigada"
+    sub="Quem comanda a cozinha da Rua Fleet" fare="Direção &amp; Criação"
+    leadIn="Antes de qualquer torta ir ao forno, são estas mãos que afiam a navalha, marcam o passo e afinam o grito."
+    data={STAFF} tex="assets/textures/pg1.jpg" />,
+  <CastPage
+    label="Versão E · Personagens I" title="Pratos Principais"
+    sub="A navalha e o forno — dois recheios por prato" fare="Personagens · I"
+    data={PERSONAGENS.slice(0, 4)} tex="assets/textures/pg2.jpg" />,
+  <ImagePage src="assets/paginas/pagina-inter-1.jpg" alt="Sweeney Todd — cena da produção" />,
+  <CastPage
+    label="Versão E · Personagens II" title="Pratos Principais"
+    sub="Os corações ingênuos da Rua Fleet" fare="Personagens · II"
+    data={PERSONAGENS.slice(4, 8)} tex="assets/textures/pg3.jpg" />,
+  <CastPage
+    label="Versão E · Personagens III" title="Pratos Principais"
+    sub="A cozinha e as ruas de Londres" fare="Personagens · III"
+    data={PERSONAGENS.slice(8, 12)} tex="assets/textures/pg1.jpg" />,
+  <CastPage
+    label="Versão E · Personagens IV" title="Pratos Principais"
+    sub="Guardados do balcão" fare="Personagens · IV"
+    data={PERSONAGENS.slice(12, 15)} tex="assets/textures/pg2.jpg" />,
+  <CastPage
+    label="Versão E · Ensemble I" title="Guarnições"
+    sub="O conjunto que tempera as ruas de Londres" fare="Ensemble · I"
+    data={ENSEMBLE.slice(0, 4)} tex="assets/textures/pg3.jpg" />,
+  <CastPage
+    label="Versão E · Ensemble II" title="Guarnições"
+    sub="O conjunto que tempera as ruas de Londres" fare="Ensemble · II"
+    data={ENSEMBLE.slice(4, 7)} tex="assets/textures/pg1.jpg" />,
+  <TechPage tex="assets/textures/pg2.jpg" />];
+
+function Flipbook() {
+  React.useEffect(function () { initFlipbook(); }, []);
+  return (
+    <div className="deck" id="deck">
+      {FLIP_PAGES.map(function (pg, i) {
+        return (
+          <div className={"slide" + (i === 0 ? " is-active" : "")} data-page={String(i + 1)} key={i}>
+            <FlipPage>{pg}</FlipPage>
+          </div>);
+      })}
+    </div>);
+}
+
+function initFlipbook() {
+  const deck = document.getElementById('deck');
+  const counter = document.getElementById('counter');
+  const hint = document.getElementById('swipeHint');
+  const fill = document.getElementById('progressFill');
+  const slides = deck.querySelectorAll('.slide');
+  const TOTAL = slides.length;
+
+  /* escala cada pagina (520x735) para preencher o quadro */
+  function fit() {
+    deck.querySelectorAll('.page-holder').forEach(function (h) {
+      const s = h.parentElement.clientWidth / 520;
+      h.style.transform = 'scale(' + s + ')';
+    });
+  }
+  fit();
+  requestAnimationFrame(fit);
+  addEventListener('resize', fit);
+  addEventListener('load', fit);
+
+  /* contador + dica */
+  const io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (e.isIntersecting && e.intersectionRatio > 0.5) {
+        const cur = e.target;
+        slides.forEach(function (s) { s.classList.toggle('is-active', s === cur); });
+        const p = cur.dataset.page;
+        counter.innerHTML = '<b>' + p + '</b> <span>/ ' + TOTAL + '</span>';
+        hint.classList.toggle('hidden', p !== '1');
+      }
+    });
+  }, { root: deck, threshold: [0.5, 0.6] });
+  slides.forEach(function (s) { io.observe(s); });
+
+  /* barra de progresso */
+  let ticking = false;
+  function frame() {
+    const max = deck.scrollWidth - deck.clientWidth;
+    fill.style.width = (max > 0 ? deck.scrollLeft / max * 100 : 0) + '%';
+    ticking = false;
+  }
+  deck.addEventListener('scroll', function () {
+    if (!ticking) { ticking = true; requestAnimationFrame(frame); }
+  }, { passive: true });
+  frame();
+
+  /* navegacao: teclado (todos) + clique nas laterais (desktop) */
+  const flip = function (dir) { deck.scrollBy({ left: dir * deck.clientWidth, behavior: 'smooth' }); };
+  addEventListener('keydown', function (ev) {
+    if (['ArrowRight', 'ArrowDown', ' ', 'PageDown'].indexOf(ev.key) >= 0) { ev.preventDefault(); flip(1); }
+    else if (['ArrowLeft', 'ArrowUp', 'PageUp'].indexOf(ev.key) >= 0) { ev.preventDefault(); flip(-1); }
+  });
+  if (matchMedia('(hover:hover) and (pointer:fine)').matches) {
+    deck.addEventListener('click', function (ev) {
+      if (ev.target.closest('a')) return;
+      const x = ev.clientX, w = window.innerWidth;
+      if (x > w * 0.62) flip(1);
+      else if (x < w * 0.38) flip(-1);
+    });
+  }
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<Flipbook />);
+</script>
+</body>
+</html>
