@@ -1186,7 +1186,10 @@ function emberMat(){
 }
 
 /* brasas (Points com shader — tamanho + alpha por partícula) */
-function makeEmbers(scene, count, rise){
+function makeEmbers(scene, count, rise, opts){
+  opts = opts || {};
+  const sMin = opts.sizeMin != null ? opts.sizeMin : 2;
+  const sRange = opts.sizeRange != null ? opts.sizeRange : 6;
   const pos = new Float32Array(count*3), col = new Float32Array(count*3);
   const siz = new Float32Array(count), alp = new Float32Array(count);
   const data = [];
@@ -1195,7 +1198,7 @@ function makeEmbers(scene, count, rise){
     pos[i*3]=x; pos[i*3+1]=y; pos[i*3+2]=0;
     const warm = Math.random();
     col[i*3]=1.0; col[i*3+1]=0.35+warm*0.4; col[i*3+2]=0.12+warm*0.12;
-    siz[i]=2+Math.random()*6; alp[i]=Math.random();
+    siz[i]=sMin+Math.random()*sRange; alp[i]=Math.random();
     data.push({ sp: rise*(0.35+Math.random()*0.9), sway: 6+Math.random()*22, freq: 0.4+Math.random()*1.2, ph: Math.random()*6.28, tw: 0.6+Math.random()*2.4 });
   }
   const geo = new THREE.BufferGeometry();
@@ -1204,7 +1207,7 @@ function makeEmbers(scene, count, rise){
   geo.setAttribute('aSize', new THREE.BufferAttribute(siz,1));
   geo.setAttribute('aAlpha', new THREE.BufferAttribute(alp,1));
   const pts = new THREE.Points(geo, emberMat()); scene.add(pts);
-  return { pts, geo, data, count };
+  return { pts, geo, data, count, even: !!opts.even };
 }
 const embers = makeEmbers(bgScene, isMobile ? 120 : 280, 34);
 
@@ -1218,7 +1221,10 @@ if (!reduced){
   front.setPixelRatio(Math.min(devicePixelRatio, 2));
   front.setSize(innerWidth, innerHeight);
   frontScene = new THREE.Scene();
-  if (!isMobile) frontEmbers = makeEmbers(frontScene, 46, 46);
+  // desktop: brasas frontais sutis; mobile: poucas, maiores e brilhantes, subindo pela tela o tempo todo
+  frontEmbers = isMobile
+    ? makeEmbers(frontScene, 22, 40, { sizeMin:7, sizeRange:9, even:true })
+    : makeEmbers(frontScene, 46, 46);
 }
 
 /* ---- faíscas lançadas na virada de página (sutil) ---- */
@@ -1281,7 +1287,9 @@ function stepEmbers(E, dt, t){
     p[i*3+1] += d.sp*dt*3;
     p[i*3]   += Math.sin(t*d.freq + d.ph)*d.sway*dt;
     const h = (p[i*3+1] + H/2) / H;                         // 0 base .. 1 topo
-    a[i] = (0.35 + 0.65*Math.abs(Math.sin(t*d.tw + d.ph))) * Math.max(0.12, 1 - 0.7*h);
+    a[i] = E.even
+      ? (0.6 + 0.4*Math.abs(Math.sin(t*d.tw + d.ph))) * Math.max(0.55, 1 - 0.2*h)   // notáveis em toda a tela
+      : (0.35 + 0.65*Math.abs(Math.sin(t*d.tw + d.ph))) * Math.max(0.12, 1 - 0.7*h);
     if (p[i*3+1] > top){
       p[i*3+1] = bot;
       p[i*3] = (Math.random() < 0.68)                       // maioria sobe pelas laterais do livro
