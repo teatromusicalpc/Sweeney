@@ -654,7 +654,7 @@
   :root{ --flip-red:#c81a20; }
   html,body{ height:100%; overflow:hidden; background:#0a0807; color:#e9e2cf;
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; }
-  body{ position:fixed; inset:0;
+  body{ position:fixed; inset:0; touch-action:none;   /* arrasto do flip/gordura não é roubado por scroll/zoom */
     background:
       radial-gradient(85% 42% at 50% -8%, rgba(30,40,64,.55) 0%, rgba(18,22,38,.20) 44%, transparent 66%),
       radial-gradient(120% 80% at 50% 118%, #3a0507 0%, #170406 40%, #0a0605 72%, #060404 100%); }
@@ -1091,7 +1091,7 @@
 
 <div class="progress" id="progress"><div class="progress__fill" id="progressFill"></div></div>
 
-<div id="root"><div class="deck" id="deck"><div class="slide is-active" data-page="1"><div class="stage"><div class="page-holder"><div class="v6" data-screen-label="Versão E · Capa"><div class="photo-bg"><img loading="eager" decoding="async" src="assets/capa-foto-2.jpg" alt="Sweeney e Mrs. Lovett à porta da fornalha"></div><div class="shade"></div><div class="grain6"></div><div class="border6"></div><div class="inner"><img loading="eager" decoding="async" class="logo" src="assets/logo-sweeney.png" alt="Sweeney Todd — O Cruel Barbeiro da Rua Fleet"><div class="menu-invite"><div class="rule6"></div><div class="bill">Cardápio do Dia</div><div class="rule6"></div></div><div class="company"><span>Uma produção da</span><img loading="eager" decoding="async" src="assets/logo-pace.png" alt="Companhia PACE — Danças &amp; Artes"></div></div></div></div></div></div><div class="slide" data-page="2"><div class="stage"><div class="page-holder"><div class="np" data-screen-label="Versão E · Repertório"><div class="tex-bg"><img loading="eager" decoding="async" src="assets/textures/pg3.jpg" alt=""></div><div class="inner"><h1 class="ttl">Repertório</h1><div class="sub">As canções servidas esta noite</div><div class="orn">✦ ❦ ✦</div><div class="fare">Cardápio Musical</div><div class="songs"><div class="act"><div class="act-h">Primeiro Ato</div><ol><li><span class="n">1</span><span>A Balada de Sweeney Todd</span></li><li><span class="n">2</span><span>Não há nada igual Londres</span></li><li><span class="n">3</span><span>Torta mais ruim de Londres</span></li><li><span class="n">4</span><span>Que Fim</span></li><li><span class="n">5</span><span>Meu Amor</span></li><li><span class="n">6</span><span>Canário, Andorinha e Pardal</span></li><li><span class="n">7</span><span>Johanna</span></li><li><span class="n">8</span><span>O Elixir Pirelli</span></li><li><span class="n">9</span><span>O Duelo</span></li><li><span class="n">10</span><span>Beijo</span></li><li><span class="n">11</span><span>Belas Moças</span></li><li><span class="n">12</span><span>Epifania</span></li><li><span class="n">13</span><span>Bom Pastor</span></li></ol></div><div class="act"><div class="act-h">Segundo Ato</div><ol><li><span class="n">1</span><span>Meu Deus, é tão bom!</span></li><li><span class="n">2</span><span>Johanna <em>(reprise)</em></span></li><li><span class="n">3</span><span>Junto ao Mar</span></li><li><span class="n">4</span><span>Eu não vou Deixar</span></li><li><span class="n">5</span><span>Ruas em Chamas</span></li><li><span class="n">6</span><span>Belas Moças <em>(reprise)</em></span></li><li><span class="n">7</span><span>Cena Final</span></li><li><span class="n">8</span><span>A Balada de Sweeney Todd <em>(reprise)</em></span></li></ol></div></div><div class="foot-bar"><div class="rule-orn">✦ ❦ ✦</div><div class="note">Intervalo de <b>15 minutos</b> entre os atos · a casa agradece a preferência</div></div></div></div></div></div></div><div class="slide" data-page="3"><div class="stage"><div class="page-holder"><div class="np" data-screen-label="Versão E · A Brigada"><div class="tex-bg"><img loading="eager" decoding="async" src="assets/textures/pg1.jpg" alt=""></div><div class="inner"><h1 class="ttl">A Brigada</h1><div class="sub">Quem comanda a cozinha da Rua Fleet</div><div class="orn">✦ ❦ ✦</div><div class="fare">Direção &amp; Criação</div><div class="castarea withlead"><div class="lead-in">Antes de qualquer torta ir ao forno, são estas mãos que afiam a navalha, marcam o passo e afinam o grito.</div><div class="grid3 big"><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/brenda-bertozzi.jpg" alt="Brenda Bertozzi"></div><div class="nm">Brenda Bertozzi</div><div class="flavor">torta de coreógrafa</div></div><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/luan-domingues.jpg" alt="Luan Domingues"></div><div class="nm">Luan Domingues</div><div class="flavor">torta de diretor geral</div></div><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/gabriel-campos-novo.jpg" alt="Gabriel Campos"></div><div class="nm">Gabriel Campos</div><div class="flavor">torta de diretor vocal</div></div></div></div></div></div></div></div></div><div class="slide" data-page="4"><div class="stage"><div class="page-holder"><div class="np" data-screen-label="Versão E · Personagens I"><div class="tex-bg"><img loading="eager" decoding="async" src="assets/textures/pg2.jpg" alt=""></div><div class="inner"><h1 class="ttl">Pratos Principais</h1><div class="sub">A navalha e o forno — dois recheios por prato</div><div class="orn">✦ ❦ ✦</div><div class="fare">Personagens · I</div><div class="castarea"><div class="grid3 big"><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/joaquim-pomarico.jpg" alt="Joaquim Pomarico"></div><div class="nm">Joaquim Pomarico</div><div class="flavor">torta de Sweeney</div></div><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/carlos-fadiga.jpg" alt="Carlos Fadiga"></div><div class="nm">Carlos Fadiga</div><div class="flavor">torta de Sweeney</div></div><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/lara-marta.jpg" alt="Lara Marta"></div><div class="nm">Lara Marta</div><div class="flavor">torta de Lovett</div></div><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/alaiane-fartes.jpg" alt="Alaiane Fartes"></div><div class="nm">Alaiane Fartes</div><div class="flavor">torta de Lovett</div></div></div></div></div></div></div></div></div><div class="slide" data-page="5"><div class="stage"><div class="page-holder"><div class="imgpage"><img loading="eager" decoding="async" src="assets/paginas/pagina-inter-1.jpg" alt="Sweeney Todd — cena da produção"><div class="plate-border"></div></div></div></div></div><div class="slide" data-page="6"><div class="stage"><div class="page-holder"><div class="np" data-screen-label="Versão E · Personagens II"><div class="tex-bg"><img loading="eager" decoding="async" src="assets/textures/pg3.jpg" alt=""></div><div class="inner"><h1 class="ttl">Pratos Principais</h1><div class="sub">Os corações ingênuos da Rua Fleet</div><div class="orn">✦ ❦ ✦</div><div class="fare">Personagens · II</div><div class="castarea"><div class="grid3 big"><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/yuri-suheishi.jpg" alt="Yuri Suheishi"></div><div class="nm">Yuri Suheishi</div><div class="flavor">torta de Anthony</div></div><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/pedro-gileno.jpg" alt="Pedro Gileno"></div><div class="nm">Pedro Gileno</div><div class="flavor">torta de Anthony</div></div><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/liz-dias.jpg" alt="Liz Dias"></div><div class="nm">Liz Dias</div><div class="flavor">torta de Johanna</div></div></div></div></div></div></div></div></div><div class="slide" data-page="13"><div class="stage"><div class="page-holder"><div class="imgpage"><img loading="eager" decoding="async" src="assets/paginas/pagina-inter-2.jpg" alt="Sweeney Todd — cena da produção"><div class="plate-border"></div></div></div></div></div><div class="slide" data-page="7"><div class="stage"><div class="page-holder"><div class="np" data-screen-label="Versão E · Personagens III"><div class="tex-bg"><img loading="eager" decoding="async" src="assets/textures/pg1.jpg" alt=""></div><div class="inner"><h1 class="ttl">Pratos Principais</h1><div class="sub">A cozinha e as ruas de Londres</div><div class="orn">✦ ❦ ✦</div><div class="fare">Personagens · III</div><div class="castarea"><div class="grid3 big"><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/ligia-fragano.jpg" alt="Ligia Fragano"></div><div class="nm">Ligia Fragano</div><div class="flavor">torta de mendiga</div></div><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/marie-prado.jpg" alt="Marie Prado"></div><div class="nm">Marie Prado</div><div class="flavor">torta de mendiga</div></div><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/gabriel-martins.jpg" alt="Gabriel Martins"></div><div class="nm">Gabriel Martins</div><div class="flavor">torta de Fogg</div></div><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/pagin.jpg" alt="Pagin"></div><div class="nm">Pagin</div><div class="flavor">torta de Fogg</div></div></div></div></div></div></div></div></div><div class="slide" data-page="14"><div class="stage"><div class="page-holder"><div class="imgpage"><img loading="eager" decoding="async" src="assets/paginas/pagina-inter-3.jpg" alt="Sweeney Todd — cena da produção"><div class="plate-border"></div></div></div></div></div><div class="slide" data-page="8"><div class="stage"><div class="page-holder"><div class="np" data-screen-label="Versão E · Personagens IV"><div class="tex-bg"><img loading="eager" decoding="async" src="assets/textures/pg2.jpg" alt=""></div><div class="inner"><h1 class="ttl">Pratos Principais</h1><div class="sub">O balcão, o bedel e quem serve</div><div class="orn">✦ ❦ ✦</div><div class="fare">Personagens · IV</div><div class="castarea"><div class="grid3 big"><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/gabriel-porto.jpg" alt="Gabriel Porto"></div><div class="nm">Gabriel Porto</div><div class="flavor">torta de Bedel</div></div><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/guilherme-assis.jpg" alt="Guilherme Assis"></div><div class="nm">Guilherme Assis</div><div class="flavor">torta de Pirelli</div></div><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/samuel-gimenes.jpg" alt="Samuel Gimenes"></div><div class="nm">Samuel Gimenes</div><div class="flavor">torta de Tobias</div></div><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/matheus-bragi.jpg" alt="Matheus Bragi"></div><div class="nm">Matheus Bragi</div><div class="flavor">torta de Tobias</div></div></div></div></div></div></div></div></div><div class="slide" data-page="15"><div class="stage"><div class="page-holder"><div class="imgpage"><img loading="eager" decoding="async" src="assets/paginas/pagina-inter-4.jpg" alt="Sweeney Todd — cena da produção"><div class="plate-border"></div></div></div></div></div><div class="slide" data-page="9"><div class="stage"><div class="page-holder"><div class="np" data-screen-label="Versão E · Ensemble I"><div class="tex-bg"><img loading="eager" decoding="async" src="assets/textures/pg3.jpg" alt=""></div><div class="inner"><h1 class="ttl">Guarnições</h1><div class="sub">O conjunto que tempera as ruas de Londres</div><div class="orn">✦ ❦ ✦</div><div class="fare">Ensemble · I</div><div class="castarea"><div class="grid3 big"><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/jenniffer-vieira.jpg" alt="Jenniffer Vieira"></div><div class="nm">Jenniffer Vieira</div><div class="flavor">torta de bailarina</div></div><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/gabriela-dias.jpg" alt="Gabriela Dias"></div><div class="nm">Gabriela Dias</div><div class="flavor">torta de artista</div></div><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/amanda-ricardini.jpg" alt="Amanda Ricardini"></div><div class="nm">Amanda Ricardini</div><div class="flavor">torta de burguesa</div></div><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/victoria-andrade.jpg" alt="Victoria Andrade"></div><div class="nm">Victoria Andrade</div><div class="flavor">torta de costureira</div></div></div></div></div></div></div></div></div><div class="slide" data-page="16"><div class="stage"><div class="page-holder"><div class="imgpage"><img loading="eager" decoding="async" src="assets/paginas/pagina-inter-5.jpg" alt="Sweeney Todd — cena da produção"><div class="plate-border"></div></div></div></div></div><div class="slide" data-page="10"><div class="stage"><div class="page-holder"><div class="np" data-screen-label="Versão E · Ensemble II"><div class="tex-bg"><img loading="eager" decoding="async" src="assets/textures/pg1.jpg" alt=""></div><div class="inner"><h1 class="ttl">Guarnições</h1><div class="sub">O conjunto que tempera as ruas de Londres</div><div class="orn">✦ ❦ ✦</div><div class="fare">Ensemble · II</div><div class="castarea"><div class="grid3 big"><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/manuela-rossi.jpg" alt="Manuela Rossi"></div><div class="nm">Manuela Rossi</div><div class="flavor">torta de grávida</div></div><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/naara-alves.jpg" alt="Naara Alves"></div><div class="nm">Naara Alves</div><div class="flavor">torta de fofoqueira</div></div><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/larissa-vitti.jpg" alt="Larissa Vitti"></div><div class="nm">Larissa Vitti</div><div class="flavor">torta de fugitiva</div></div></div></div></div></div></div></div></div><div class="slide" data-page="17"><div class="stage"><div class="page-holder"><div class="imgpage"><img loading="eager" decoding="async" src="assets/paginas/pagina-inter-6.jpg" alt="Sweeney Todd — cena da produção"><div class="plate-border"></div></div></div></div></div><div class="slide" data-page="11"><div class="stage"><div class="page-holder"><div class="np" data-screen-label="Versão E · Equipe Técnica"><div class="tex-bg"><img loading="eager" decoding="async" src="assets/textures/pg2.jpg" alt=""></div><div class="inner"><h1 class="ttl">Equipe Técnica</h1><div class="sub">Quem afia a navalha longe dos holofotes</div><div class="orn">✦ ❦ ✦</div><div class="fare">Nos Bastidores</div><div class="tech"><div class="rows"><div class="row"><div class="blk"><span class="k">Sonoplastia</span><span class="v">Gabriel Campos</span></div><div class="blk"><span class="k">Iluminação</span><span class="v">Luis Cremonezzi</span></div></div><div class="row"><div class="blk wide"><span class="k">Cenografia · cadeira</span><span class="v">Evaldo de Oliveira Alves e Moacyr Alves</span></div></div><div class="row"><div class="blk"><span class="k">Figurinos</span><span class="v">Hellen Sallis</span><span class="role">concepção</span><span class="gap"></span><span class="v">Victoria Andrade</span><span class="role">confecção</span></div><div class="blk"><span class="k">Fotografia</span><span class="v">Juninho Garcia</span></div></div><div class="sep"></div><div class="row"><div class="blk wide small"><span class="k">Agradecimentos</span><span class="v">Bia Câmara, Raphael Miranda, Adriano Mesquita</span></div></div><div class="row"><div class="blk wide small"><span class="k">Apoio</span><span class="v">TMPC — Teatro Musical Poços de Caldas</span></div></div></div></div><div class="foot-bar"><div class="rule-orn">✦ ❦ ✦</div><div class="note">A navalha afiada · o forno aceso · <b>boa noite</b></div></div></div></div></div></div></div><div class="slide" data-page="12"><div class="stage"><div class="page-holder"><div class="np" data-screen-label="Versão E · A Conta"><div class="tex-bg"><img loading="eager" decoding="async" src="assets/textures/pg3.jpg" alt=""></div><div class="inner"><h1 class="ttl">A Conta</h1><div class="sub">Na Rua Fleet, todo mundo paga a conta</div><div class="orn">✦ ❦ ✦</div><div class="fare">Serviço Encerrado</div><div class="closing"><p class="farewell">“Obrigada por jantar conosco. A casa não se responsabiliza pelos ossos — e sussurra, baixinho: o freguês de hoje é o recheio de amanhã.”</p><div class="signoff">— Mrs. Lovett &amp; Cia.</div><div class="closing-orn">✶</div><div class="company-end"><span>Uma produção da</span><a class="pace-link" href="https://www.instagram.com/ciapace/" target="_blank" rel="noopener" aria-label="Seguir a Companhia PACE no Instagram"><img loading="eager" decoding="async" src="assets/logo-pace.png" alt="Companhia PACE"></a><span class="ig-note">clique para nos seguir no Instagram</span></div></div></div></div></div></div></div></div></div></div>
+<div id="root"><div class="deck" id="deck"><div class="slide is-active" data-page="1"><div class="stage"><div class="page-holder"><div class="v6" data-screen-label="Versão E · Capa"><div class="photo-bg"><img loading="eager" decoding="async" src="assets/capa-foto-2.jpg" alt="Sweeney e Mrs. Lovett à porta da fornalha"></div><div class="shade"></div><div class="grain6"></div><div class="border6"></div><div class="inner"><img loading="eager" decoding="async" class="logo" src="assets/logo-sweeney.png" alt="Sweeney Todd — O Cruel Barbeiro da Rua Fleet"><div class="menu-invite"><div class="rule6"></div><div class="bill">Cardápio do Dia</div><div class="rule6"></div></div><div class="company"><span>Uma produção da</span><img loading="eager" decoding="async" src="assets/logo-pace.png" alt="Companhia PACE — Danças &amp; Artes"></div></div></div></div></div></div><div class="slide" data-page="2"><div class="stage"><div class="page-holder"><div class="np" data-screen-label="Versão E · Repertório"><div class="tex-bg"><img loading="eager" decoding="async" src="assets/textures/pg3.jpg" alt=""></div><div class="inner"><h1 class="ttl">Repertório</h1><div class="sub">As canções servidas esta noite</div><div class="orn">✦ ❦ ✦</div><div class="fare">Cardápio Musical</div><div class="songs"><div class="act"><div class="act-h">Primeiro Ato</div><ol><li><span class="n">1</span><span>A Balada de Sweeney Todd</span></li><li><span class="n">2</span><span>Não há nada igual Londres</span></li><li><span class="n">3</span><span>Torta mais ruim de Londres</span></li><li><span class="n">4</span><span>Que Fim</span></li><li><span class="n">5</span><span>Meu Amor</span></li><li><span class="n">6</span><span>Canário, Andorinha e Pardal</span></li><li><span class="n">7</span><span>Johanna</span></li><li><span class="n">8</span><span>O Elixir Pirelli</span></li><li><span class="n">9</span><span>O Duelo</span></li><li><span class="n">10</span><span>Beijo</span></li><li><span class="n">11</span><span>Belas Moças</span></li><li><span class="n">12</span><span>Epifania</span></li><li><span class="n">13</span><span>Bom Pastor</span></li></ol></div><div class="act"><div class="act-h">Segundo Ato</div><ol><li><span class="n">1</span><span>Meu Deus, é tão bom!</span></li><li><span class="n">2</span><span>Johanna <em>(reprise)</em></span></li><li><span class="n">3</span><span>Junto ao Mar</span></li><li><span class="n">4</span><span>Eu não vou Deixar</span></li><li><span class="n">5</span><span>Ruas em Chamas</span></li><li><span class="n">6</span><span>Belas Moças <em>(reprise)</em></span></li><li><span class="n">7</span><span>Cena Final</span></li><li><span class="n">8</span><span>A Balada de Sweeney Todd <em>(reprise)</em></span></li></ol></div></div><div class="foot-bar"><div class="rule-orn">✦ ❦ ✦</div><div class="note">Intervalo de <b>15 minutos</b> entre os atos · a casa agradece a preferência</div></div></div></div></div></div></div><div class="slide" data-page="3"><div class="stage"><div class="page-holder"><div class="np" data-screen-label="Versão E · A Brigada"><div class="tex-bg"><img loading="eager" decoding="async" src="assets/textures/pg1.jpg" alt=""></div><div class="inner"><h1 class="ttl">A Brigada</h1><div class="sub">Quem comanda a cozinha da Rua Fleet</div><div class="orn">✦ ❦ ✦</div><div class="fare">Direção &amp; Criação</div><div class="castarea withlead"><div class="lead-in">Antes de qualquer torta ir ao forno, são estas mãos que afiam a navalha, marcam o passo e afinam o grito.</div><div class="grid3 big"><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/brenda-bertozzi.jpg" alt="Brenda Bertozzi"></div><div class="nm">Brenda Bertozzi</div><div class="flavor">torta de coreógrafa</div></div><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/luan-domingues.jpg" alt="Luan Domingues"></div><div class="nm">Luan Domingues</div><div class="flavor">torta de diretor geral</div></div><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/gabriel-campos-novo.jpg" alt="Gabriel Campos"></div><div class="nm">Gabriel Campos</div><div class="flavor">torta de diretor vocal</div></div></div></div></div></div></div></div></div><div class="slide" data-page="4"><div class="stage"><div class="page-holder"><div class="np" data-screen-label="Versão E · Personagens I"><div class="tex-bg"><img loading="eager" decoding="async" src="assets/textures/pg2.jpg" alt=""></div><div class="inner"><h1 class="ttl">Pratos Principais</h1><div class="sub">A navalha e o forno — dois recheios por prato</div><div class="orn">✦ ❦ ✦</div><div class="fare">Personagens · I</div><div class="castarea"><div class="grid3 big"><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/joaquim-pomarico.jpg" alt="Joaquim Pomarico"></div><div class="nm">Joaquim Pomarico</div><div class="flavor">torta de Sweeney / Juiz</div></div><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/carlos-fadiga.jpg" alt="Carlos Fadiga"></div><div class="nm">Carlos Fadiga</div><div class="flavor">torta de Sweeney / Juiz</div></div><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/lara-marta.jpg" alt="Lara Marta"></div><div class="nm">Lara Marta</div><div class="flavor">torta de Lovett</div></div><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/alaiane-fartes.jpg" alt="Alaiane Fartes"></div><div class="nm">Alaiane Fartes</div><div class="flavor">torta de Lovett</div></div></div></div></div></div></div></div></div><div class="slide" data-page="5"><div class="stage"><div class="page-holder"><div class="imgpage"><img loading="eager" decoding="async" src="assets/paginas/pagina-inter-1.jpg" alt="Sweeney Todd — cena da produção"><div class="plate-border"></div></div></div></div></div><div class="slide" data-page="6"><div class="stage"><div class="page-holder"><div class="np" data-screen-label="Versão E · Personagens II"><div class="tex-bg"><img loading="eager" decoding="async" src="assets/textures/pg3.jpg" alt=""></div><div class="inner"><h1 class="ttl">Pratos Principais</h1><div class="sub">Os corações ingênuos da Rua Fleet</div><div class="orn">✦ ❦ ✦</div><div class="fare">Personagens · II</div><div class="castarea"><div class="grid3 big"><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/yuri-suheishi.jpg" alt="Yuri Suheishi"></div><div class="nm">Yuri Suheishi</div><div class="flavor">torta de Anthony</div></div><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/pedro-gileno.jpg" alt="Pedro Gileno"></div><div class="nm">Pedro Gileno</div><div class="flavor">torta de Anthony</div></div><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/liz-dias.jpg" alt="Liz Dias"></div><div class="nm">Liz Dias</div><div class="flavor">torta de Johanna</div></div></div></div></div></div></div></div></div><div class="slide" data-page="13"><div class="stage"><div class="page-holder"><div class="imgpage"><img loading="eager" decoding="async" src="assets/paginas/pagina-inter-2.jpg" alt="Sweeney Todd — cena da produção"><div class="plate-border"></div></div></div></div></div><div class="slide" data-page="7"><div class="stage"><div class="page-holder"><div class="np" data-screen-label="Versão E · Personagens III"><div class="tex-bg"><img loading="eager" decoding="async" src="assets/textures/pg1.jpg" alt=""></div><div class="inner"><h1 class="ttl">Pratos Principais</h1><div class="sub">A cozinha e as ruas de Londres</div><div class="orn">✦ ❦ ✦</div><div class="fare">Personagens · III</div><div class="castarea"><div class="grid3 big"><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/ligia-fragano.jpg" alt="Ligia Fragano"></div><div class="nm">Ligia Fragano</div><div class="flavor">torta de mendiga</div></div><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/marie-prado.jpg" alt="Marie Prado"></div><div class="nm">Marie Prado</div><div class="flavor">torta de mendiga</div></div><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/gabriel-martins.jpg" alt="Gabriel Martins"></div><div class="nm">Gabriel Martins</div><div class="flavor">torta de Fogg</div></div><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/pagin.jpg" alt="Pagin"></div><div class="nm">Pagin</div><div class="flavor">torta de Fogg</div></div></div></div></div></div></div></div></div><div class="slide" data-page="14"><div class="stage"><div class="page-holder"><div class="imgpage"><img loading="eager" decoding="async" src="assets/paginas/pagina-inter-3.jpg" alt="Sweeney Todd — cena da produção"><div class="plate-border"></div></div></div></div></div><div class="slide" data-page="8"><div class="stage"><div class="page-holder"><div class="np" data-screen-label="Versão E · Personagens IV"><div class="tex-bg"><img loading="eager" decoding="async" src="assets/textures/pg2.jpg" alt=""></div><div class="inner"><h1 class="ttl">Pratos Principais</h1><div class="sub">O balcão, o bedel e quem serve</div><div class="orn">✦ ❦ ✦</div><div class="fare">Personagens · IV</div><div class="castarea"><div class="grid3 big"><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/gabriel-porto.jpg" alt="Gabriel Porto"></div><div class="nm">Gabriel Porto</div><div class="flavor">torta de Bedel</div></div><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/guilherme-assis.jpg" alt="Guilherme Assis"></div><div class="nm">Guilherme Assis</div><div class="flavor">torta de Pirelli</div></div><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/samuel-gimenes.jpg" alt="Samuel Gimenes"></div><div class="nm">Samuel Gimenes</div><div class="flavor">torta de Tobias</div></div><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/matheus-bragi.jpg" alt="Matheus Bragi"></div><div class="nm">Matheus Bragi</div><div class="flavor">torta de Tobias</div></div></div></div></div></div></div></div></div><div class="slide" data-page="15"><div class="stage"><div class="page-holder"><div class="imgpage"><img loading="eager" decoding="async" src="assets/paginas/pagina-inter-4.jpg" alt="Sweeney Todd — cena da produção"><div class="plate-border"></div></div></div></div></div><div class="slide" data-page="9"><div class="stage"><div class="page-holder"><div class="np" data-screen-label="Versão E · Ensemble I"><div class="tex-bg"><img loading="eager" decoding="async" src="assets/textures/pg3.jpg" alt=""></div><div class="inner"><h1 class="ttl">Guarnições</h1><div class="sub">O conjunto que tempera as ruas de Londres</div><div class="orn">✦ ❦ ✦</div><div class="fare">Ensemble · I</div><div class="castarea"><div class="grid3 big"><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/jenniffer-vieira.jpg" alt="Jenniffer Vieira"></div><div class="nm">Jenniffer Vieira</div><div class="flavor">torta de bailarina</div></div><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/gabriela-dias.jpg" alt="Gabriela Dias"></div><div class="nm">Gabriela Dias</div><div class="flavor">torta de artista</div></div><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/amanda-ricardini.jpg" alt="Amanda Ricardini"></div><div class="nm">Amanda Ricardini</div><div class="flavor">torta de burguesa</div></div><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/victoria-andrade.jpg" alt="Victoria Andrade"></div><div class="nm">Victoria Andrade</div><div class="flavor">torta de costureira</div></div></div></div></div></div></div></div></div><div class="slide" data-page="16"><div class="stage"><div class="page-holder"><div class="imgpage"><img loading="eager" decoding="async" src="assets/paginas/pagina-inter-5.jpg" alt="Sweeney Todd — cena da produção"><div class="plate-border"></div></div></div></div></div><div class="slide" data-page="10"><div class="stage"><div class="page-holder"><div class="np" data-screen-label="Versão E · Ensemble II"><div class="tex-bg"><img loading="eager" decoding="async" src="assets/textures/pg1.jpg" alt=""></div><div class="inner"><h1 class="ttl">Guarnições</h1><div class="sub">O conjunto que tempera as ruas de Londres</div><div class="orn">✦ ❦ ✦</div><div class="fare">Ensemble · II</div><div class="castarea"><div class="grid3 big"><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/manuela-rossi.jpg" alt="Manuela Rossi"></div><div class="nm">Manuela Rossi</div><div class="flavor">torta de grávida</div></div><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/naara-alves.jpg" alt="Naara Alves"></div><div class="nm">Naara Alves</div><div class="flavor">torta de fofoqueira</div></div><div class="chef"><div class="ph"><img loading="eager" decoding="async" src="assets/cast/larissa-vitti.jpg" alt="Larissa Vitti"></div><div class="nm">Larissa Vitti</div><div class="flavor">torta de fugitiva</div></div></div></div></div></div></div></div></div><div class="slide" data-page="17"><div class="stage"><div class="page-holder"><div class="imgpage"><img loading="eager" decoding="async" src="assets/paginas/pagina-inter-6.jpg" alt="Sweeney Todd — cena da produção"><div class="plate-border"></div></div></div></div></div><div class="slide" data-page="11"><div class="stage"><div class="page-holder"><div class="np" data-screen-label="Versão E · Equipe Técnica"><div class="tex-bg"><img loading="eager" decoding="async" src="assets/textures/pg2.jpg" alt=""></div><div class="inner"><h1 class="ttl">Equipe Técnica</h1><div class="sub">Quem afia a navalha longe dos holofotes</div><div class="orn">✦ ❦ ✦</div><div class="fare">Nos Bastidores</div><div class="tech"><div class="rows"><div class="row"><div class="blk"><span class="k">Sonoplastia</span><span class="v">Gabriel Campos</span></div><div class="blk"><span class="k">Iluminação</span><span class="v">Luis Cremonezzi</span></div></div><div class="row"><div class="blk wide"><span class="k">Cenografia · cadeira</span><span class="v">Evaldo de Oliveira Alves e Moacyr Alves</span></div></div><div class="row"><div class="blk"><span class="k">Figurinos</span><span class="v">Hellen Sallys</span><span class="role">concepção</span><span class="gap"></span><span class="v">Victoria Andrade</span><span class="role">confecção</span></div><div class="blk"><span class="k">Fotografia e Design</span><span class="v">Juninho Garcia</span></div></div><div class="sep"></div><div class="row"><div class="blk wide small"><span class="k">Agradecimentos</span><span class="v">Bia Câmara, Raphael Miranda, Adriano Mesquita</span></div></div><div class="row"><div class="blk wide small"><span class="k">Apoio</span><span class="v">TMPC — Teatro Musical Poços de Caldas</span></div></div></div></div><div class="foot-bar"><div class="rule-orn">✦ ❦ ✦</div><div class="note">A navalha afiada · o forno aceso · <b>boa noite</b></div></div></div></div></div></div></div><div class="slide" data-page="12"><div class="stage"><div class="page-holder"><div class="np" data-screen-label="Versão E · A Conta"><div class="tex-bg"><img loading="eager" decoding="async" src="assets/textures/pg3.jpg" alt=""></div><div class="inner"><h1 class="ttl">A Conta</h1><div class="sub">Na Rua Fleet, todo mundo paga a conta</div><div class="orn">✦ ❦ ✦</div><div class="fare">Serviço Encerrado</div><div class="closing"><p class="farewell">“Obrigada por jantar conosco. A casa não se responsabiliza pelos ossos — e sussurra, baixinho: o freguês de hoje é o recheio de amanhã.”</p><div class="signoff">— Mrs. Lovett &amp; Cia.</div><div class="closing-orn">✶</div><div class="company-end"><span>Uma produção da</span><a class="pace-link" href="https://www.instagram.com/ciapace/" target="_blank" rel="noopener" aria-label="Seguir a Companhia PACE no Instagram"><img loading="eager" decoding="async" src="assets/logo-pace.png" alt="Companhia PACE"></a><span class="ig-note">clique para nos seguir no Instagram</span></div></div></div></div></div></div></div></div></div></div>
 
 
 <script type="importmap">
@@ -1213,17 +1213,27 @@ const leaves = holders.map((holder, i) => {
   pivot.add(obj);
   cssScene.add(pivot);
   return { leaf, front, back, shade, rim, smudges, gloss, obj, pivot, angle:0, target:0, baseZ:0,
-           ease:0.14, mounted:true };
+           ease:0.14, vis:true };
 });
-// monta/desmonta a folha do grafo: ao remover o CSS3DObject, o renderer apaga o
-// elemento do DOM (à prova de fantasma de composição — nada sobra para vazar)
+// mostra/esconde a folha via obj.visible → o CSS3DRenderer aplica display:none, que LIBERA a
+// camada de composição na GPU (visibility:hidden mantinha as 17 folhas compostas → crash de
+// memória no mobile). O elemento e o <img> continuam no DOM, então a imagem não re-decodifica.
 function setMounted(L, on){
-  if (L.mounted === on) return;
-  L.mounted = on;
-  if (on) L.pivot.add(L.obj); else L.pivot.remove(L.obj);
+  if (L.vis === on) return;
+  L.vis = on;
+  L.obj.visible = on;
 }
 /* a capa resiste como capa dura: abertura mais lenta e pesada */
 if (leaves[0]){ leaves[0].ease = 0.085; }
+
+/* buffer inicial: pré-decodifica as imagens em pequenos lotes (3 por vez) para a virada não
+   engasgar no mobile, SEM o pico de memória de decodificar as ~30 imagens de uma só vez (crash) */
+(async function warmImages(){
+  const imgs = [...document.querySelectorAll('#deck img')];
+  for (let i = 0; i < imgs.length; i += 3){
+    await Promise.allSettled(imgs.slice(i, i+3).map(im => im.decode ? im.decode().catch(()=>{}) : Promise.resolve()));
+  }
+})();
 
 function applyTargets(){ leaves.forEach((L,i)=> L.target = (i < current ? -Math.PI : 0)); }
 function updateStack(){
@@ -1242,15 +1252,18 @@ function updateHUD(){
 
 /* --------- navegação --------- */
 let cooldown = false;
+function arrive(L){                                 // cerimônia de chegada (one-shot)
+  if (!L) return;
+  L.leaf.classList.remove('is-arriving'); void L.leaf.offsetWidth;
+  L.leaf.classList.add('is-arriving');
+  clearTimeout(L._arr); L._arr = setTimeout(()=> L.leaf.classList.remove('is-arriving'), 1150);
+}
 function flip(dir){
   const next = Math.min(TOTAL-1, Math.max(0, current + dir));
   if (next === current || cooldown) return;
   current = next; cooldown = true; setTimeout(()=> cooldown=false, 240);
   applyTargets(); updateStack(); updateHUD(); flipKick();
-  const L = leaves[current];                       // cerimônia de chegada (one-shot)
-  if (L){ L.leaf.classList.remove('is-arriving'); void L.leaf.offsetWidth;
-          L.leaf.classList.add('is-arriving');
-          clearTimeout(L._arr); L._arr = setTimeout(()=> L.leaf.classList.remove('is-arriving'), 1150); }
+  arrive(leaves[current]);
 }
 
 /* =========================== atmosfera WebGL =========================== */
@@ -1452,22 +1465,23 @@ function fit(){
 let camDist = 1600;
 addEventListener('resize', fit);
 
-/* ---- gordura no toque: o leitor suja a página onde clica/toca ---- */
-const SMUDGE_MAX = 40;
-function smudgeAt(clientX, clientY){
+/* ---- gordura no toque/arrasto: o leitor suja a página onde toca ---- */
+const SMUDGE_MAX = 64;                                       // cabe um rastro arrastado inteiro
+function smudgeAt(clientX, clientY, strength){
   const L = leaves[current]; if (!L || !L.smudges) return;
   const r = L.front.getBoundingClientRect(); if (r.width < 10) return;
   const lx = (clientX - r.left) / r.width  * PAGE_W;
   const ly = (clientY - r.top)  / r.height * PAGE_H;
   if (lx < 3 || lx > PAGE_W-3 || ly < 3 || ly > PAGE_H-3) return;   // fora da folha → ignora
+  const st = strength == null ? 1 : Math.max(0.08, Math.min(1, strength));
   const s = document.createElement('div'); s.className = 'smudge';
   s.innerHTML = '<div class="stain"></div><div class="sheen"></div>';
-  const size = 44 + Math.random()*42;
+  const size = (40 + Math.random()*40) * (0.45 + st*0.55);   // encolhe conforme enfraquece
   s.style.left = lx.toFixed(1)+'px'; s.style.top = ly.toFixed(1)+'px';
   s.style.width = size.toFixed(0)+'px';
   s.style.height = (size*(0.7+Math.random()*0.45)).toFixed(0)+'px';
   s.style.setProperty('--r', (Math.random()*360|0)+'deg');
-  s.style.opacity = (0.6 + Math.random()*0.35).toFixed(2);
+  s.style.opacity = ((0.55 + Math.random()*0.35) * st).toFixed(2);  // clareia conforme enfraquece
   L.smudges.appendChild(s);
   while (L.smudges.childElementCount > SMUDGE_MAX) L.smudges.removeChild(L.smudges.firstChild);
 }
@@ -1489,15 +1503,7 @@ addEventListener('keydown', (e)=>{
   if (['ArrowRight','ArrowDown',' ','PageDown'].includes(e.key)){ e.preventDefault(); flip(1); }
   else if (['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){ e.preventDefault(); flip(-1); }
 });
-if (!isMobile){
-  document.addEventListener('click', (e)=>{
-    if (e.target.closest('.nav-arrow')) return;
-    if (e.target.closest('a')) return;       // link nativo (logo PACE) navega sozinho
-    if (paceHit(e.clientX, e.clientY)) return;  // fallback: clique na área do logo → Instagram
-    smudgeAt(e.clientX, e.clientY);          // suja a página onde clicou
-    const x = e.clientX, w = innerWidth;
-    if (x > w*0.62) flip(1); else if (x < w*0.38) flip(-1);
-  });
+if (!isMobile){                                    // roda do mouse: navegação rápida no desktop
   let wheelLock = false;
   addEventListener('wheel', (e)=>{
     const d = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
@@ -1506,28 +1512,93 @@ if (!isMobile){
     flip(d > 0 ? 1 : -1);
   }, { passive:true });
 }
-/* swipe touch */
-let tx=0, ty=0;
-addEventListener('touchstart', (e)=>{ tx=e.touches[0].clientX; ty=e.touches[0].clientY; }, { passive:true });
-addEventListener('touchend', (e)=>{
-  if (e.target.closest && e.target.closest('a')) return;   // link nativo → abre sozinho
-  const cxT=e.changedTouches[0].clientX, cyT=e.changedTouches[0].clientY;
-  const dx=cxT-tx, dy=cyT-ty;
-  if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) flip(dx < 0 ? 1 : -1);
-  else if (Math.abs(dx) < 12 && Math.abs(dy) < 12){     // toque parado (tap)
-    if (paceHit(cxT, cyT)) return;                       // tap no logo → Instagram
-    smudgeAt(cxT, cyT);                                  // senão, suja onde tocou
-  }
-}, { passive:true });
 
-/* paralaxe suave da câmera */
-let tgtX=0, tgtY=0, camX=0, camY=0;
-if (!isMobile){
-  addEventListener('pointermove', (e)=>{
-    tgtX = (e.clientX/innerWidth - 0.5)*26;
-    tgtY = -(e.clientY/innerHeight - 0.5)*18;
-  });
+/* =========================== gestos: virar arrastando + gordura arrastada =========================== */
+let tgtX=0, tgtY=0, camX=0, camY=0;                // paralaxe da câmera (usada no tick)
+
+// estado de um gesto em andamento
+const drag = { on:false, id:-1, sx:0, sy:0, lx:0, ly:0,
+               mode:null, leaf:null, dir:0, prog:0, str:1, dist:0 };
+const DRAG_ARM = 7;        // px até decidir se é flip ou gordura
+const DRAG_STEP = 11;      // px entre marcas de gordura no rastro
+const COMMIT = 0.32;       // fração da página arrastada que confirma a virada
+
+function beginFlip(dx){
+  // arrasto p/ a esquerda vira adiante; p/ a direita traz a anterior de volta
+  if (dx < 0 && current < TOTAL-1){ drag.dir = 1;  drag.leaf = leaves[current];   }
+  else if (dx > 0 && current > 0){  drag.dir = -1; drag.leaf = leaves[current-1]; }
+  else { drag.leaf = null; return; }               // nada para virar naquele sentido
+  drag.leaf.dragging = true;
+  drag.leaf.baseZ = 140;                            // enquanto dobra, fica por cima de tudo
 }
+function moveFlip(x){
+  if (!drag.leaf) return;
+  const w = PAGE_W * pageScaleS || innerWidth*0.6;  // largura da folha na tela (estável)
+  const raw = (drag.dir === 1 ? (drag.sx - x) : (x - drag.sx)) / w;   // avanço no sentido do giro
+  drag.prog = Math.max(0, Math.min(1, raw));
+  drag.leaf.angle = drag.dir === 1 ? -drag.prog*Math.PI      // 0 → -π conforme dobra
+                                   : -(1 - drag.prog)*Math.PI; // -π → 0 conforme volta
+}
+function endFlip(){
+  const L = drag.leaf; if (!L) return;
+  L.dragging = false;
+  if (drag.prog > COMMIT){                          // passou do limiar → confirma a virada
+    current = Math.min(TOTAL-1, Math.max(0, current + drag.dir));
+    applyTargets(); updateStack(); updateHUD(); flipKick(); arrive(leaves[current]);
+  } else {
+    applyTargets(); updateStack();                  // não passou → volta ao repouso
+  }
+}
+
+function gestureDown(e){
+  if (document.getElementById('intro')) return;    // durante a abertura, a intro cuida do toque
+  if (e.target.closest && (e.target.closest('.nav-arrow') || e.target.closest('a'))) return;
+  drag.on = true; drag.id = e.pointerId;
+  drag.sx = drag.lx = e.clientX; drag.sy = drag.ly = e.clientY;
+  drag.mode = null; drag.leaf = null; drag.dir = 0; drag.prog = 0; drag.str = 1; drag.dist = 0;
+}
+function gestureMove(e){
+  if (!drag.on){                                    // sem arrasto: só paralaxe da câmera (desktop)
+    if (!isMobile){ tgtX = (e.clientX/innerWidth-0.5)*26; tgtY = -(e.clientY/innerHeight-0.5)*18; }
+    return;
+  }
+  if (e.pointerId !== drag.id) return;
+  const dx = e.clientX - drag.sx, dy = e.clientY - drag.sy;
+  if (!drag.mode){                                  // decide a intenção no 1º movimento firme
+    if (Math.hypot(dx, dy) < DRAG_ARM) return;
+    if (Math.abs(dx) > Math.abs(dy) + 2){ drag.mode = 'flip'; beginFlip(dx); }
+    else { drag.mode = 'grease'; smudgeAt(e.clientX, e.clientY, drag.str); }  // 1ª marca forte
+  }
+  if (drag.mode === 'flip') moveFlip(e.clientX);
+  else if (drag.mode === 'grease'){                 // rastro que começa forte e enfraquece
+    drag.dist += Math.hypot(e.clientX-drag.lx, e.clientY-drag.ly);
+    while (drag.dist >= DRAG_STEP){
+      drag.dist -= DRAG_STEP;
+      smudgeAt(e.clientX, e.clientY, drag.str);
+      drag.str = Math.max(0.1, drag.str * 0.9);     // esmaece a cada passo
+    }
+  }
+  drag.lx = e.clientX; drag.ly = e.clientY;
+}
+function gestureUp(e){
+  if (!drag.on || e.pointerId !== drag.id) return;
+  drag.on = false;
+  if (drag.mode === 'flip') endFlip();
+  else if (!drag.mode){                             // toque parado (sem arrasto) = clique
+    if (!paceHit(e.clientX, e.clientY)) smudgeAt(e.clientX, e.clientY);   // logo PACE ou pingo de gordura
+  }
+  drag.mode = null; drag.leaf = null;
+}
+function gestureCancel(){
+  if (!drag.on) return;
+  drag.on = false;
+  if (drag.leaf){ drag.leaf.dragging = false; applyTargets(); updateStack(); }
+  drag.mode = null; drag.leaf = null;
+}
+addEventListener('pointerdown',   gestureDown);
+addEventListener('pointermove',   gestureMove);
+addEventListener('pointerup',     gestureUp);
+addEventListener('pointercancel', gestureCancel);
 
 /* ---- giroscópio (mobile): reflexo de luz que desliza pelo papel conforme a inclinação ---- */
 let glX=50, glY=38, glTX=50, glTY=38, glOn=false;
@@ -1559,12 +1630,11 @@ function tick(){
   const t  = clock.elapsedTime;                        // usa a propriedade (getElapsedTime chamaria getDelta de novo, zerando dt)
   const dtn = dt*60;                                   // normaliza suavização/paralaxe p/ 60fps
 
-  // em repouso, só a página atual é renderizada (evita z-fighting/vazamento do CSS3D);
-  // a vizinhança só entra em cena enquanto alguma folha está girando
-  const anyMoving = leaves.some(L => Math.abs(L.angle - L.target) > 0.006);
   leaves.forEach((L,i)=>{
-    // suavização exponencial independente de framerate (sem "pop" em 120Hz)
-    L.angle += (L.target - L.angle) * (1 - Math.pow(1 - L.ease, dtn));
+    // suavização exponencial independente de framerate (sem "pop" em 120Hz);
+    // durante o arrasto, o ângulo da folha é ditado pelo dedo (não faz easing)
+    if (!L.dragging)
+      L.angle += (L.target - L.angle) * (1 - Math.pow(1 - L.ease, dtn));
     L.pivot.rotation.y = L.angle;
     const a  = Math.min(Math.abs(L.angle), Math.PI);
     const sh = Math.sin(a);
@@ -1575,8 +1645,7 @@ function tick(){
     const active = (i === current) || (i === current-1 && Math.abs(L.angle) < HALF_PI);
     if ((L.leaf.classList.contains('is-active')) !== active) L.leaf.classList.toggle('is-active', active);
     const rel  = i - current;
-    const show = anyMoving ? (rel >= -1 && rel <= 2) : (i === current);
-    setMounted(L, show);          // em repouso só a folha atual existe no DOM
+    setMounted(L, rel >= -1 && rel <= 2);   // vizinhança sempre visível (pilha do livro); distantes escondidas
   });
 
   // faíscas nascendo da borda livre da folha em movimento (empurrão no sentido do giro)
